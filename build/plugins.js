@@ -6,7 +6,7 @@ import { createHtmlPlugin } from "vite-plugin-html";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import eslintPlugin from "vite-plugin-eslint";
+
 import viteCompression from "vite-plugin-compression";
 
 export const createVitePlugins = (viteEnv) => {
@@ -15,9 +15,6 @@ export const createVitePlugins = (viteEnv) => {
     vue(),
     // vue 可以使用 jsx/tsx 语法
     vueJsx(),
-    // esLint 报错信息显示在浏览器界面上
-    eslintPlugin(),
-
     // 创建打包压缩配置
     createCompression(viteEnv),
     // 注入变量到 html 文件

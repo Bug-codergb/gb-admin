@@ -2,7 +2,9 @@
 </script>
 
 <template>
-  <div>app</div>
+  <el-config-provider>
+    <router-view></router-view>
+  </el-config-provider>
 </template>
 
 <style scoped>

@@ -15,6 +15,7 @@ const useAuthStore = defineStore({
         {
           path: '/home/index',
           component: '/home/index',
+          name:'home',
           meta: {
             title:"首页"
           }
@@ -22,6 +23,7 @@ const useAuthStore = defineStore({
         {
           path: "/about/index",
           component: '/about/index',
+          name:'about',
           meta: {
             title:"关于"
           }

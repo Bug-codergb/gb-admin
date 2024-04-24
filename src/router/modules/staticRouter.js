@@ -2,6 +2,7 @@ import {
   LOGIN_URL
 } from "@/config/index.js";
 import { HOME_URL } from "../../config";
+
 export const staticRouter = [
   {
     path: "/",
@@ -19,7 +20,11 @@ export const staticRouter = [
     path: '/layout',
     name: 'layout',
     component: () => import("@/layouts/index.vue"),
-    //redirect: HOME_URL,
-    //children:[]
+    redirect: HOME_URL,
+    children:[]
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    component: () => import("@/components/ErrorMessage/404.vue")
   }
 ]

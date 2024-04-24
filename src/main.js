@@ -6,6 +6,7 @@ import "element-plus/dist/index.css";
 import * as Icons from "@element-plus/icons-vue";
 
 import router from "@/router/index.js";
+console.log(router.getRoutes())
 import App from "./App.vue"
 const app = createApp(App)
 

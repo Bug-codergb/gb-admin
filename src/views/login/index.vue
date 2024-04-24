@@ -10,7 +10,9 @@ import { HOME_URL} from "@/config/index"
 const router = useRouter();
 const login = () => {
   console.log(1)
-  initDynamicRouter();
+  //initDynamicRouter();
+ 
+  console.log(router)
   router.push({
     path:HOME_URL
   })

@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import ElementPlus from "element-plus";
+import "./styles/element.scss";
 // element css
 import "element-plus/dist/index.css";
 // element icons

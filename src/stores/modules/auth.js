@@ -3,7 +3,26 @@ const useAuthStore = defineStore({
   id: 'auth',
   state: () => {
     return {
-      authMenuList: [],
+      authMenuList: [
+        {
+          path: '/home/index',
+          component: '/home/index',
+          name: 'home',
+          icon:'HomeFilled',
+          meta: {
+            title:"首页"
+          }
+        },
+        {
+          path: "/about/index",
+          component: '/about/index',
+          name: 'about',
+          icon:'QuestionFilled',
+          meta: {
+            title:"关于"
+          }
+        }
+      ],
       authButtonList:[]
     }
   },

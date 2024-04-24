@@ -10,15 +10,14 @@ const router = createRouter({
   scrollBehavior:()=>({left:0,top:0})
 })
 router.beforeEach((to, from, next) => {
+  console.log(to)
   if (to.path === "/login") {
     return next();
   }
   if (arr.length === 0) {
     const authStore = useAuthStore();
     initDynamicRouter();
-    arr=[1]
-  console.log(router.getRoutes());
-  ;
+    arr=[1];
   return next({...to});
   }
   next();

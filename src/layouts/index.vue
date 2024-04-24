@@ -1,8 +1,5 @@
 <template>
-  <div>
-    layouts
     <component :is="LayoutVerical"/> 
-  </div>
 </template>
 <script setup>
 import LayoutVerical from "./LayoutVerical/index.vue";

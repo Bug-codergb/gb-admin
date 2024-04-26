@@ -1,5 +1,5 @@
 <template>
-  <RenderTableColumn/>
+  <RenderTableColumn v-bind="column"/>
 </template>
 <script setup lang="jsx" name="TableColumn">
 import { useSlots, } from "vue";

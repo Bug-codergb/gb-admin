@@ -1,8 +1,9 @@
 <template>
-  <div class="card main">
-    <el-table ref="tableRef" :data="data ?? tableData">
+  <div class="card table-main">
+    <el-table ref="tableRef" :data="data ?? tableData" :border="border">
       <slot></slot>
       <template v-for="item in tableColumns" :key="item">
+        <!-- 特俗列 -->
         <el-table-column
           v-if="item.type && ['selection','index','expand'].includes(item.type)"
           v-bind="item"
@@ -12,6 +13,7 @@
             <slot v-else :name="item.type" v-bind="scope"/>
           </template>
         </el-table-column>
+
         <TableColumn v-if="!item.type && item.prop && item.isShow" :column="item">
           <template v-for="slot in Object.keys($slots)" #[slot]="scope">
             <slot :name="slot" v-bind="scope"></slot>
@@ -22,10 +24,9 @@
   </div>
 </template>
 <script setup name="GbTable" lang="jsx">
-import { defineProps,ref,reactive,onMounted } from "vue";
-import TableColumn from "./components/TableColumn.vue"
-import { useTable } from "../hooks/useTable.js"
-import TableColumn from "../components/TableColumn.vue";
+import { defineProps,ref,reactive,onMounted ,defineExpose} from "vue";
+import TableColumn from "../components/TableColumn.vue"
+import { useTable } from "@/hooks/useTable.js"
 const props = defineProps({
   columns:{
     type:Array,
@@ -35,9 +36,7 @@ const props = defineProps({
   },
   data:{
     type:Array,
-    default(){
-      return []
-    }
+    default:null
   },
   requestApi:{
     type:Function,
@@ -51,9 +50,7 @@ const props = defineProps({
   },
   dataCallback:{
     type:Function,
-    default(){
-      return ()=>{}
-    }
+    default:null
   },
   pagination:{
     type:Boolean,
@@ -92,7 +89,7 @@ const {
   handleSizeChange,
   handleCurrentChange
 } = useTable(props.requestApi,props.initParam,props.pagination,props.dataCallback,undefined);
-
+console.log(tableData)
 const tableRef = ref();
 
 onMounted(()=>{
@@ -100,4 +97,7 @@ onMounted(()=>{
 })
 
 const tableColumns = ref(props.columns);
+defineExpose({
+  search
+})
 </script>

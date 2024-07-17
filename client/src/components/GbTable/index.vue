@@ -25,12 +25,9 @@
         </el-table-column>
 
         <TableColumn v-if="!item.type && item.prop && item.isShow" :column="item">
-          <!-- <template v-for="slot in Object.keys($slots)" #[slot]="scope">
+          <template v-for="slot in Object.keys($slots)" #[slot]="scope">
             {{ slot }}
             <slot :name="slot" v-bind="scope"></slot>
-          </template> -->
-          <template #employee="scope">
-            <slot name="employee" v-bind="scope"></slot>
           </template>
         </TableColumn>
       </template>

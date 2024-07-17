@@ -1,7 +1,7 @@
 /* 设置 notification、message 层级在 loading 之上 */
 .el-message,
 .el-notification {
-  z-index: 2058 !important;
+  z-index: 2070 !important;
 }
 
 /* el-alert */
@@ -82,8 +82,7 @@
   width: 100%;
   height: 100%;
   .table-box {
-    // 这里减去的是 treeFilter 组件宽度
-    width: calc(100% - 230px);treeFilterwidth
+    overflow: hidden;
   }
 }
 
@@ -96,16 +95,45 @@
   width: 100%;
   height: 100%;
 
+  // table-search 表格搜索样式
+  .table-search {
+    padding: 18px 18px 0;
+    margin-bottom: 10px;
+    .el-form {
+      .el-form-item__content > * {
+        width: 100%;
+      }
+
+      // 去除时间选择器上下 padding
+      .el-range-editor.el-input__wrapper {
+        padding: 0 10px;
+      }
+    }
+    .operation {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 18px;
+    }
+  }
+
   // 表格 header 样式
   .table-header {
+    .header-button-lf,
+    .header-button-ri {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px 12px;
+      margin-bottom: 15px;
+      .el-button:not(.el-input .el-button) {
+        margin-left: 0;
+      }
+    }
     .header-button-lf {
       float: left;
     }
     .header-button-ri {
       float: right;
-    }
-    .el-button {
-      margin-bottom: 15px;
     }
   }
 
@@ -127,21 +155,28 @@
     .el-table__row {
       height: 45px;
       font-size: 14px;
+      .move {
+        cursor: move;
+        .el-icon {
+          cursor: move;
+        }
+      }
     }
 
     // 设置 el-table 中 header 文字不换行，并省略
     .el-table__header .el-table__cell > .cell {
-      white-space: nowrap;
+      // white-space: nowrap;white-space
+      white-space: wrap;
     }
 
     // 解决表格数据为空时样式不居中问题(仅在element-plus中)
     .el-table__empty-block {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       .table-empty {
         line-height: 30px;
+        img {
+          display: inline-flex;
+        }
       }
     }
 
@@ -161,5 +196,75 @@
   }
 }
 
+/* el-table 组件大小 */
+.el-table--small {
+  .el-table__header th {
+    height: 40px !important;
+    font-size: 14px !important;
+  }
+  .el-table__row {
+    height: 40px !important;
+    font-size: 13px !important;
+  }
+}
+.el-table--large {
+  .el-table__header th {
+    height: 50px !important;
+    font-size: 16px !important;
+  }
+  .el-table__row {
+    height: 50px !important;
+    font-size: 15px !important;
+  }
+}
 
+/* el-drawer */
+.el-drawer {
+  .el-drawer__header {
+    padding: 16px 20px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--el-border-color-lighter);
+    span {
+      font-size: 17px;
+      line-height: 17px;
+      color: var(--el-text-color-primary) !important;
+    }
+  }
+  .el-drawer__footer {
+    border-top: 1px solid var(--el-border-color-lighter);
+  }
 
+  // select 样式
+  .el-select {
+    width: 100%;
+  }
+
+  // drawer-form 中存在两列 form-item 样式
+  .drawer-multiColumn-form {
+    display: flex;
+    flex-wrap: wrap;
+    .el-form-item {
+      width: 47%;
+      &:nth-child(2n-1) {
+        margin-right: 5%;
+      }
+    }
+  }
+}
+
+/* el-dialog */
+.el-dialog {
+  padding: 0;
+  .el-dialog__header {
+    padding: 15px 20px;
+    margin: 0;
+    border-bottom: 1px solid var(--el-border-color-lighter);
+    .el-dialog__title {
+      font-size: 17px;
+    }
+  }
+  .el-dialog__body,
+  .el-dialog__footer {
+    padding: 15px 20px;
+  }
+}

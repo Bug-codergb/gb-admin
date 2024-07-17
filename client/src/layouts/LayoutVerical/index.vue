@@ -3,8 +3,8 @@
     <el-aside>
       <div class="aside-box" :style="{ width: isCollapse ? '65px' : '210px' }">
         <div class="logo">
-          <img src="../../assets/logo.svg" />
-          <span class="name">Admin</span>
+          <img class="logo-img" src="../../assets/logo.svg" />
+          <span class="logo-text">Admin</span>
         </div>
         <el-scrollbar>
           <el-menu :router="false" :collapse="isCollapse">
@@ -39,36 +39,5 @@ console.log(menuList);
 }
 </style>
 <style scoped lang="scss">
-.el-container {
-  height: 100%;
-  width: 100%;
-  :deep(.el-aside) {
-    width: auto;
-  }
-}
-.el-header {
-  .el-header {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 55px;
-    padding: 0 15px;
-    background-color: var(--el-header-bg-color);
-    border-bottom: 1px solid var(--el-header-border-color);
-  }
-}
-.logo {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  img {
-    width: 30px;
-  }
-  .name {
-    font-weight: bolder;
-    font-size: 28px;
-  }
-}
+@import "./index";
 </style>

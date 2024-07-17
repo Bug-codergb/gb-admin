@@ -1,5 +1,13 @@
 <template>
   <div class="card table-main">
+    <div class="table-header">
+      <div class="header-button-lf">
+        <slot name="tableHeader" />
+      </div>
+      <div v-if="toolButton" class="header-button-ri">
+        <slot name="toolButton"> </slot>
+      </div>
+    </div>
     <el-table ref="tableRef" :data="data ?? tableData" :border="border">
       <slot></slot>
       <template v-for="item in tableColumns" :key="item">
@@ -25,7 +33,7 @@
   </div>
 </template>
 <script setup name="GbTable" lang="jsx">
-import { defineProps, ref, reactive, onMounted, defineExpose } from "vue";
+import { defineProps, ref, onMounted, defineExpose } from "vue";
 import TableColumn from "../components/TableColumn.vue";
 import { useTable } from "@/hooks/useTable.js";
 const props = defineProps({

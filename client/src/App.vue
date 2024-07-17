@@ -1,12 +1,8 @@
-<script setup name="App">
-</script>
-
+<script setup name="App"></script>
 <template>
   <el-config-provider>
     <router-view></router-view>
   </el-config-provider>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

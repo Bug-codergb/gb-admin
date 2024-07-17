@@ -4,39 +4,46 @@
       <div class="aside-box" :style="{ width: isCollapse ? '65px' : '210px' }">
         <el-scrollbar>
           <el-menu :router="false" :collapse="isCollapse">
-             <SubMenu :menu-list="menuList"/> 
+            <SubMenu :menu-list="menuList" />
           </el-menu>
         </el-scrollbar>
       </div>
     </el-aside>
     <el-container>
       <el-header>header</el-header>
-      <Main/>
+      <Main />
     </el-container>
   </el-container>
-  
 </template>
 <script setup name="LayoutVerical">
 import { computed, ref } from "vue";
 import SubMenu from "../components/Menu/SubMenu.vue";
-import Main from "../components/Main/index.vue"
+import Main from "../components/Main/index.vue";
 import useAuthStore from "@/stores/modules/auth.js";
 const authStore = useAuthStore();
-console.log(authStore) 
+console.log(authStore);
 const isCollapse = ref(false);
-const menuList = computed(() => authStore.authMenuListGet)
+const menuList = computed(() => authStore.authMenuListGet);
 console.log(menuList);
 </script>
+<style>
+.el-menu {
+  border-right: none;
+}
+.el-aside {
+  border-right: 1px solid #dcdfe6;
+}
+</style>
 <style scoped lang="scss">
-  .el-container{
-    height: 100%;
-    width: 100%;
-    :deep(.el-aside){
-      width:auto;
-    }
+.el-container {
+  height: 100%;
+  width: 100%;
+  :deep(.el-aside) {
+    width: auto;
   }
-  .el-header{
-    .el-header {
+}
+.el-header {
+  .el-header {
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -46,5 +53,5 @@ console.log(menuList);
     background-color: var(--el-header-bg-color);
     border-bottom: 1px solid var(--el-header-border-color);
   }
-  }
+}
 </style>

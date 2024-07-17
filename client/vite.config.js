@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 const { dependencies, devDependencies, name, version } = pkg;
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
-  lastBuildTime: dayjs().format("YYYY-MM-DD HH:mm:ss")
+  lastBuildTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
 };
 
 // @see: https://vitejs.dev/config/
@@ -24,18 +24,18 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         "@": resolve(__dirname, "./src"),
-        "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js"
-      }
+        "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js",
+      },
     },
     define: {
-      __APP_INFO__: JSON.stringify(__APP_INFO__)
+      __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "@/styles/var.scss";`
-        }
-      }
+          additionalData: `@import "@/styles/var.scss";`,
+        },
+      },
     },
     server: {
       host: "0.0.0.0",
@@ -47,13 +47,13 @@ export default defineConfig(({ mode }) => {
         "/api": {
           target: "http://localhost:8888",
           rewrite: (path) => path.replace(/\/api/, ""),
-          changeOrigin:true
-        }
-      }
+          changeOrigin: true,
+        },
+      },
     },
     plugins: createVitePlugins(viteEnv),
     esbuild: {
-      pure: viteEnv.VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
+      pure: viteEnv.VITE_DROP_CONSOLE ? ["console.log", "debugger"] : [],
     },
     build: {
       outDir: "dist",
@@ -75,9 +75,9 @@ export default defineConfig(({ mode }) => {
           // Static resource classification and packaging
           chunkFileNames: "assets/js/[name]-[hash].js",
           entryFileNames: "assets/js/[name]-[hash].js",
-          assetFileNames: "assets/[ext]/[name]-[hash].[ext]"
-        }
-      }
-    }
+          assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
+        },
+      },
+    },
   };
 });

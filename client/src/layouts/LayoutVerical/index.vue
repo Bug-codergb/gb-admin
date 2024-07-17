@@ -2,6 +2,10 @@
   <el-container class="layout">
     <el-aside>
       <div class="aside-box" :style="{ width: isCollapse ? '65px' : '210px' }">
+        <div class="logo">
+          <img src="../../assets/logo.svg" />
+          <span class="name">Admin</span>
+        </div>
         <el-scrollbar>
           <el-menu :router="false" :collapse="isCollapse">
             <SubMenu :menu-list="menuList" />
@@ -52,6 +56,19 @@ console.log(menuList);
     padding: 0 15px;
     background-color: var(--el-header-bg-color);
     border-bottom: 1px solid var(--el-header-border-color);
+  }
+}
+.logo {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 30px;
+  }
+  .name {
+    font-weight: bolder;
+    font-size: 28px;
   }
 }
 </style>

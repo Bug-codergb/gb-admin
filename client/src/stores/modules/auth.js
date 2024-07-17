@@ -6,15 +6,15 @@ const useAuthStore = defineStore({
   state: () => {
     return {
       authMenuList: [],
-      authButtonList: [],
+      authButtonList: []
     };
   },
   getters: {
-    authMenuListGet: (state) => state.authMenuList,
-    showMenuListGet: (state) => state.authMenuList,
-    flatMenuListGet: (state) => getFlatMenuList(state.authMenuList),
+    authMenuListGet: state => state.authMenuList,
+    showMenuListGet: state => state.authMenuList,
+    flatMenuListGet: state => getFlatMenuList(state.authMenuList),
 
-    authButtonListGet: (state) => state.authButtonList,
+    authButtonListGet: state => state.authButtonList
   },
   actions: {
     async getAuthMenuList() {
@@ -27,7 +27,8 @@ const useAuthStore = defineStore({
           children: [],
           meta: {
             title: "首页",
-          },
+            icon: "Setting"
+          }
         },
         {
           path: "/setting/index",
@@ -39,36 +40,41 @@ const useAuthStore = defineStore({
               component: "/role/index",
               meta: {
                 title: "角色管理",
-              },
+                icon: "Setting"
+              }
             },
             {
               path: "/account/index",
               component: "/account/index",
               meta: {
                 title: "账户管理",
-              },
-            },
+                icon: "Setting"
+              }
+            }
           ],
           meta: {
             title: "系统设置",
-          },
+            icon: "Setting"
+          }
         },
         {
           path: "/data/index",
           component: "/data/index",
           meta: {
             title: "数据管理",
-          },
+            icon: "Setting"
+          }
         },
         {
           path: "/vendor/index",
           component: "/vendor/index",
           meta: {
             title: "供应商管理",
-          },
-        },
+            icon: "Setting"
+          }
+        }
       ]; //res.data;
-    },
-  },
+    }
+  }
 });
 export default useAuthStore;

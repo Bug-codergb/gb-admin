@@ -11,13 +11,13 @@ import "element-plus/theme-chalk/dark/css-vars.css";
 import * as Icons from "@element-plus/icons-vue";
 
 import router from "@/router/index.js";
-console.log(router.getRoutes());
+
 import App from "./App.vue";
 const app = createApp(App);
 
 import pinia from "@/stores";
 // register the element Icons component
-Object.keys(Icons).forEach((key) => {
+Object.keys(Icons).forEach(key => {
   app.component(key, Icons[key]);
 });
 

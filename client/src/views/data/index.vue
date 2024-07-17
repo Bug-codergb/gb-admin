@@ -8,6 +8,8 @@
           </el-form-item>
         </el-form>
       </template>
+      <template #gender> 娜娜 </template>
+      <template #employee>程序员</template>
     </GbTable>
   </div>
 </template>
@@ -29,60 +31,23 @@ const columns = reactive([
     label: "性别",
     prop: "gender",
     isShow: true
+  },
+  {
+    label: "职业",
+    prop: "employee",
+    isShow: true
   }
 ]);
 const tableData = [
   {
     userName: "张三",
-    adress: "北京朝阳"
+    address: "北京朝阳",
+    employee: "程序员"
   },
   {
     userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
-  },
-  {
-    userName: "张三",
-    adress: "北京朝阳"
+    address: "北京朝阳",
+    employee: "程序员"
   }
 ];
 </script>

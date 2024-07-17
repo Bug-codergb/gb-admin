@@ -19,6 +19,7 @@ const RenderTableColumn = item => {
         <el-table-column {...item} align={item.align ?? "center"}>
           {{
             default: scope => {
+              console.log(slots[item.prop]);
               if (item.render) return item.render(scope);
               if (slots[item.prop]) return slots[item.prop](scope);
             }

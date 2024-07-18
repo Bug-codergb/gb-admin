@@ -9,8 +9,8 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 
 import viteCompression from "vite-plugin-compression";
 
-export const createVitePlugins = (viteEnv) => {
-  const { VITE_GLOB_APP_TITLE, VITE_REPORT, VITE_PWA } = viteEnv;
+export const createVitePlugins = viteEnv => {
+  const { VITE_APP_NAME, VITE_REPORT, VITE_PWA } = viteEnv;
   return [
     vue(),
     // vue 可以使用 jsx/tsx 语法
@@ -20,7 +20,7 @@ export const createVitePlugins = (viteEnv) => {
     // 注入变量到 html 文件
     createHtmlPlugin({
       inject: {
-        data: { title: VITE_GLOB_APP_TITLE }
+        data: { title: VITE_APP_NAME }
       }
     }),
     // 使用 svg 图标
@@ -31,34 +31,34 @@ export const createVitePlugins = (viteEnv) => {
     // vitePWA
     VITE_PWA && createVitePwa(viteEnv),
     // 是否生成包预览，分析依赖包大小做优化处理
-    VITE_REPORT && (visualizer({ filename: "stats.html", gzipSize: true, brotliSize: true }))
-];
+    VITE_REPORT && visualizer({ filename: "stats.html", gzipSize: true, brotliSize: true })
+  ];
 };
 
 /**
  * @description 根据 compress 配置，生成不同的压缩规则
  * @param viteEnv
  */
-const createCompression = (viteEnv)=> {
+const createCompression = viteEnv => {
   const { VITE_BUILD_COMPRESS = "none", VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE } = viteEnv;
   const compressList = VITE_BUILD_COMPRESS.split(",");
-  const plugins= [];
+  const plugins = [];
   if (compressList.includes("gzip")) {
     plugins.push(
-        viteCompression({
-          ext: ".gz",
-          algorithm: "gzip",
-          deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE
-        })
+      viteCompression({
+        ext: ".gz",
+        algorithm: "gzip",
+        deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE
+      })
     );
   }
   if (compressList.includes("brotli")) {
     plugins.push(
-        viteCompression({
-          ext: ".br",
-          algorithm: "brotliCompress",
-          deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE
-        })
+      viteCompression({
+        ext: ".br",
+        algorithm: "brotliCompress",
+        deleteOriginFile: VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE
+      })
     );
   }
   return plugins;
@@ -68,7 +68,7 @@ const createCompression = (viteEnv)=> {
  * @description VitePwa
  * @param viteEnv
  */
-const createVitePwa = (viteEnv) => {
+const createVitePwa = viteEnv => {
   const { VITE_GLOB_APP_TITLE } = viteEnv;
   return VitePWA({
     registerType: "autoUpdate",

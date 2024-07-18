@@ -8,7 +8,6 @@
         <slot name="toolButton"> </slot>
       </div>
     </div>
-    {{ Object.keys($slots) }}
     <el-table ref="tableRef" :data="data ?? tableData" :border="border">
       <slot></slot>
       <template v-for="item in tableColumns" :key="item">
@@ -26,7 +25,6 @@
 
         <TableColumn v-if="!item.type && item.prop && item.isShow" :column="item">
           <template v-for="slot in Object.keys($slots)" #[slot]="scope">
-            {{ slot }}
             <slot :name="slot" v-bind="scope"></slot>
           </template>
         </TableColumn>

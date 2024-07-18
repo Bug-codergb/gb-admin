@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import { staticRouter } from "./modules/staticRouter";
 import { initDynamicRouter } from "./modules/dynamicRouter";
 import useAuthStore from "../stores/modules/auth";
+import NProgress from "@/config/nprogress";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -10,6 +11,7 @@ const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 })
 });
 router.beforeEach(async (to, from, next) => {
+  NProgress.start();
   const authStore = useAuthStore();
   if (to.path === "/login") {
     return next();
@@ -20,5 +22,8 @@ router.beforeEach(async (to, from, next) => {
     return next({ ...to });
   }
   next();
+});
+router.afterEach(() => {
+  NProgress.done();
 });
 export default router;

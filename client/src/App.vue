@@ -1,4 +1,8 @@
-<script setup name="App"></script>
+<script setup name="App">
+import { useTheme } from "@/hooks/useTheme";
+const { initTheme } = useTheme();
+initTheme();
+</script>
 <template>
   <el-config-provider>
     <router-view></router-view>

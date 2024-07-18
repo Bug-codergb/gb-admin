@@ -25,10 +25,9 @@ import SubMenu from "../components/Menu/SubMenu.vue";
 import Main from "../components/Main/index.vue";
 import useAuthStore from "@/stores/modules/auth.js";
 const authStore = useAuthStore();
-console.log(authStore);
 const isCollapse = ref(false);
 const menuList = computed(() => authStore.authMenuListGet);
-console.log(menuList);
+
 </script>
 <style>
 .el-menu {

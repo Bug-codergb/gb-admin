@@ -92,7 +92,7 @@ const props = defineProps({
 });
 const { tableData, pageable, searchParam, searchInitParam, getTableList, search, handleSizeChange, handleCurrentChange } =
   useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, undefined);
-console.log(tableData);
+
 const tableRef = ref();
 
 onMounted(() => {

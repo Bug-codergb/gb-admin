@@ -27,7 +27,7 @@ const useAuthStore = defineStore({
           children: [],
           meta: {
             title: "首页",
-            icon: "Setting"
+            icon: "Menu"
           }
         },
         {
@@ -40,7 +40,7 @@ const useAuthStore = defineStore({
               component: "/role/index",
               meta: {
                 title: "角色管理",
-                icon: "Setting"
+                icon: "Menu"
               }
             },
             {
@@ -48,13 +48,13 @@ const useAuthStore = defineStore({
               component: "/account/index",
               meta: {
                 title: "账户管理",
-                icon: "Setting"
+                icon: "Menu"
               }
             }
           ],
           meta: {
             title: "系统设置",
-            icon: "Setting"
+            icon: "Menu"
           }
         },
         {
@@ -62,7 +62,7 @@ const useAuthStore = defineStore({
           component: "/data/index",
           meta: {
             title: "数据管理",
-            icon: "Setting"
+            icon: "Menu"
           }
         },
         {
@@ -70,7 +70,7 @@ const useAuthStore = defineStore({
           component: "/vendor/index",
           meta: {
             title: "供应商管理",
-            icon: "Setting"
+            icon: "Menu"
           }
         }
       ]; //res.data;

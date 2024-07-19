@@ -1,8 +1,4 @@
-import request from "..";
+import http from "@/api";
 export function getMenuListApi(params) {
-  return request({
-    url: "/menu/all",
-    method: 'get',
-    params
-  })
+  return http.get("/menu/all", params);
 }

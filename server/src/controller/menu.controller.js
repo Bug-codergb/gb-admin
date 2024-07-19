@@ -192,7 +192,7 @@ class MenuController {
       result[index].id = index;
     });
     ctx.body = {
-      status: 200,
+      code: 200,
       rows: result.slice(0, 10),
       total: result.length,
     };

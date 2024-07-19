@@ -107,6 +107,7 @@ onMounted(() => {
 
 const tableColumns = ref(props.columns);
 defineExpose({
-  search
+  search,
+  tableRef
 });
 </script>

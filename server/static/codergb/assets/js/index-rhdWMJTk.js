@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o,c}from"./index-qP9tmyiK.js";const t={},r={class:"card home"};function s(_,a){return o(),c("div",r,"home")}const f=e(t,[["render",s],["__scopeId","data-v-7063f913"]]);export{f as default};

@@ -4,7 +4,8 @@ import pluginVue from "eslint-plugin-vue";
 
 export default [
   {
-    files: ["**/*.{js,mjs,cjs,vue}"]
+    files: ["**/*.{js,mjs,cjs,vue}"],
+    ignores: ["node_modules/*", "dist/*"]
   },
   {
     files: ["**/*.js"],

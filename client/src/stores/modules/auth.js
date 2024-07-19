@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { getFlatMenuList } from "@/utils/index.js";
 import { getMenuListApi } from "../../api/modules/menu";
+import {getAllBreadcrumbList} from "@/utils"
 const useAuthStore = defineStore({
   id: "auth",
   state: () => {
@@ -14,7 +15,9 @@ const useAuthStore = defineStore({
     showMenuListGet: state => state.authMenuList,
     flatMenuListGet: state => getFlatMenuList(state.authMenuList),
 
-    authButtonListGet: state => state.authButtonList
+    authButtonListGet: state => state.authButtonList,
+
+    breadcrumbListGet: state => getAllBreadcrumbList(state.authMenuList)
   },
   actions: {
     async getAuthMenuList() {
@@ -34,6 +37,7 @@ const useAuthStore = defineStore({
           path: "/setting/index",
           component: "/setting/index",
           title: "系统设置",
+          redirect:"/role/index",
           children: [
             {
               path: "/role/index",
@@ -49,7 +53,26 @@ const useAuthStore = defineStore({
               meta: {
                 title: "账户管理",
                 icon: "Menu"
-              }
+              },
+              redirect:"/personal/index",
+              children:[
+                {
+                  path:"/personal/index",
+                  component:"/account/personal/index",
+                  meta:{
+                    title:"个人账户",
+                    icon:"House"
+                  }
+                },
+                {
+                  path:"/system/index",
+                  component:"/account/system/index",
+                  meta:{
+                    title:"系统账户",
+                    icon:"House"
+                  }
+                }
+              ]
             }
           ],
           meta: {

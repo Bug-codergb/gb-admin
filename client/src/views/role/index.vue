@@ -1,3 +1,3 @@
 <template>
-  <span>角色管理</span>
+  <div class="card table-box">角色管理</div>
 </template>

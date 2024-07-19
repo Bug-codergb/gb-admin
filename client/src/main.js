@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import ElementPlus from "element-plus";
+import "@/assets/iconfont/iconfont.scss";
 import "./styles/element.scss";
 import "./styles/common.scss";
 import "@/styles/reset.scss";

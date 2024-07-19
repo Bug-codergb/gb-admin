@@ -1,3 +1,3 @@
 <template>
-  <span>供应商11</span>
+  <div class="card table-box">供应商11</div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="table-box">
-    <GbTable :columns="columns" :pagination="true" :data="tableData">
+    <GbTable :columns="columns" :pagination="true" :request-api="getMenuListApi" :requestAuto="true">
       <template #tableHeader>
         <el-form inline>
           <el-form-item label="用户名">
@@ -15,11 +15,17 @@
 </template>
 <script setup>
 import GbTable from "@/components/GbTable/index.vue";
+import { getMenuListApi } from "@/api/modules/menu.js";
 import { reactive } from "vue";
 const columns = reactive([
   {
+    label: "ID",
+    prop: "id",
+    isShow: true
+  },
+  {
     label: "用户名",
-    prop: "userName",
+    prop: "name",
     isShow: true
   },
   {
@@ -33,21 +39,14 @@ const columns = reactive([
     isShow: true
   },
   {
-    label: "职业",
-    prop: "employee",
+    label: "学校",
+    prop: "school",
+    isShow: true
+  },
+  {
+    label: "年龄",
+    prop: "age",
     isShow: true
   }
 ]);
-const tableData = [
-  {
-    userName: "张三",
-    address: "北京朝阳",
-    employee: "程序员"
-  },
-  {
-    userName: "张三",
-    address: "北京朝阳",
-    employee: "程序员"
-  }
-];
 </script>

@@ -30,11 +30,20 @@
         </TableColumn>
       </template>
     </el-table>
+    <slot name="pagination">
+      <Pagination
+        v-if="pagination"
+        :pageable="pageable"
+        :handle-size-change="handleSizeChange"
+        :handle-current-change="handleCurrentChange"
+      />
+    </slot>
   </div>
 </template>
 <script setup name="GbTable" lang="jsx">
 import { defineProps, ref, onMounted, defineExpose } from "vue";
-import TableColumn from "../components/TableColumn.vue";
+import TableColumn from "./components/TableColumn.vue";
+import Pagination from "./components/Pagination.vue";
 import { useTable } from "@/hooks/useTable.js";
 const props = defineProps({
   columns: {
@@ -90,7 +99,6 @@ const props = defineProps({
 });
 const { tableData, pageable, searchParam, searchInitParam, getTableList, search, handleSizeChange, handleCurrentChange } =
   useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, undefined);
-
 const tableRef = ref();
 
 onMounted(() => {

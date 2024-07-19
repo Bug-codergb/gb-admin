@@ -26,13 +26,11 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 // 退出登录
-const logout = () => {
-
-};
+const logout = () => {};
 // 打开修改密码和个人信息弹窗
 const infoRef = ref(null);
 const passwordRef = ref(null);
-const openDialog = (ref: string) => {
+const openDialog = ref => {
   if (ref == "infoRef") infoRef.value?.openDialog();
   if (ref == "passwordRef") passwordRef.value?.openDialog();
 };

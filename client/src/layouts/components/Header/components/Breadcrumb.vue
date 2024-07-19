@@ -1,16 +1,14 @@
 <script setup>
-import { computed } from "vue"
-import {useRoute,useRouter} from "vue-router";
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { ArrowRight } from "@element-plus/icons-vue";
 
-import useAuthStore from "@/stores/modules/auth"
-import {useGlobalStore} from "../../../../stores/modules/global";
+import useAuthStore from "@/stores/modules/auth";
+import { useGlobalStore } from "../../../../stores/modules/global";
 
 const route = useRoute();
-const authStore =useAuthStore();
+const authStore = useAuthStore();
 const breadcrumbList = computed(() => {
-  console.log(route.matched[route.matched.length - 1].path)
-  console.log(authStore.breadcrumbListGet)
   let breadcrumbData = authStore.breadcrumbListGet[route.matched[route.matched.length - 1].path] ?? [];
   return breadcrumbData;
 });
@@ -29,9 +27,9 @@ const onBreadcrumbClick = (item, index) => {
       <transition-group name="breadcrumb">
         <el-breadcrumb-item v-for="(item, index) in breadcrumbList" :key="item.path">
           <div
-              class="el-breadcrumb__inner is-link"
-              :class="{ 'item-no-icon': !item.meta.icon }"
-              @click="onBreadcrumbClick(item, index)"
+            class="el-breadcrumb__inner is-link"
+            :class="{ 'item-no-icon': !item.meta.icon }"
+            @click="onBreadcrumbClick(item, index)"
           >
             <el-icon v-if="item.meta.icon && globalStore.breadcrumbIcon" class="breadcrumb-icon">
               <component :is="item.meta.icon"></component>

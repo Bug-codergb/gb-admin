@@ -39,7 +39,7 @@ const globalStore = useGlobalStore();
 const isCollapse = computed(() => globalStore.isCollapse);
 
 const route = useRoute();
-const activeMenu = computed(() => route.meta.activeMenu ? route.meta.activeMenu : route.path);
+const activeMenu = computed(() => (route.meta.activeMenu ? route.meta.activeMenu : route.path));
 </script>
 <style>
 .el-menu {

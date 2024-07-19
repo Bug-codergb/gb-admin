@@ -1,7 +1,7 @@
 <template>
   <el-main>
     <router-view v-slot="{ Component, route }">
-      <component :is="Component"/>
+      <component :is="Component" />
     </router-view>
   </el-main>
 </template>

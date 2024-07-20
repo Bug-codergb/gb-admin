@@ -195,6 +195,7 @@ class MenuController {
       code: 200,
       rows: result.slice(0, 10),
       total: result.length,
+      msg:"登录超时"
     };
   }
 }

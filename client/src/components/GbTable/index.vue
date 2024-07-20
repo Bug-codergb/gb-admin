@@ -100,7 +100,7 @@ const props = defineProps({
 const { tableData, pageable, searchParam, searchInitParam, getTableList, search, handleSizeChange, handleCurrentChange } =
   useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, undefined);
 const tableRef = ref();
-
+console.log(tableData);
 onMounted(() => {
   props.requestAuto && getTableList();
 });

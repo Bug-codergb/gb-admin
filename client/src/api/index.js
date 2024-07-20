@@ -37,7 +37,6 @@ class RequestHttp {
           ElMessage.error(data.msg);
           return Promise.reject(data);
         }
-        console.log(data);
         // 成功请求（在页面上除非特殊情况，否则不用处理失败逻辑）
         return data;
       },

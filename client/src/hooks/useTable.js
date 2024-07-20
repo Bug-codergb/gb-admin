@@ -13,7 +13,6 @@ export const useTable = (api, initParam, isPageable, dataCallback, requestError)
   });
   const pageParam = computed({
     get: () => {
-      console.log(state.pageable);
       return {
         pageNum: state.pageable.pageNum,
         pageSize: state.pageable.pageSize
@@ -27,12 +26,13 @@ export const useTable = (api, initParam, isPageable, dataCallback, requestError)
     if (!api) return;
     try {
       Object.assign(state.totalParam, initParam, isPageable ? pageParam.value : {});
-      console.log(pageParam.value);
-      let { data } = await api({ ...state.searchInitParam, ...state.totalParam });
-      dataCallback && (data = dataCallback(data));
-      state.tableData = isPageable ? data.rows : data;
+      
+      let res = await api({ ...state.searchInitParam, ...state.totalParam });
+      let data = res.data;
+      dataCallback && (data = dataCallback(res));
+      state.tableData = isPageable ? res.rows : res.data;
       if (isPageable) {
-        state.pageable.total = data.total;
+        state.pageable.total = res.total;
       }
     } catch (e) {
       requestError && requestError(e);
@@ -53,7 +53,6 @@ export const useTable = (api, initParam, isPageable, dataCallback, requestError)
   };
   const handleCurrentChange = val => {
     state.pageable.pageNum = val;
-    console.log(state.pageable);
     getTableList();
   };
 

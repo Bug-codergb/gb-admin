@@ -13,6 +13,7 @@ const useTheme = () => {
 
   const switchDark = () => {
     const html = document.documentElement;
+    changePrimary(primary.value);
     setAsideTheme();
     setMenuTheme();
   };

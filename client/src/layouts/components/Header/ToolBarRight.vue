@@ -1,15 +1,17 @@
 <script setup>
 import Fullscreen from "./components/Fullscreen.vue";
+import ThemeSetting from "./components/ThemeSetting.vue";
 import Avatar from "./components/Avatar.vue";
 </script>
 
 <template>
   <div class="tool-bar-ri">
     <div class="header-icon">
-      <Fullscreen/>
+      <ThemeSetting id="themeSetting" />
+      <Fullscreen />
     </div>
     <span class="username">Admin</span>
-    <Avatar/>
+    <Avatar />
   </div>
 </template>
 

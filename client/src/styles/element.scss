@@ -124,7 +124,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 15px 12px;
-      margin-bottom: 15px;
+      margin-bottom: 0;
       .el-button:not(.el-input .el-button) {
         margin-left: 0;
       }
@@ -162,11 +162,8 @@
         }
       }
     }
-
-    // 设置 el-table 中 header 文字不换行，并省略
     .el-table__header .el-table__cell > .cell {
-      // white-space: nowrap;white-space
-      white-space: wrap;
+      white-space: nowrap;
     }
 
     // 解决表格数据为空时样式不居中问题(仅在element-plus中)

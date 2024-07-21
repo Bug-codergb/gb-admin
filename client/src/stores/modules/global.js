@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { DEFAULT_PRIMARY } from "@/config";
+import piniaPersistConfig from "@/stores/helper/persist";
 export const useGlobalStore = defineStore({
   id: "admin-global",
   state: () => ({
@@ -17,5 +18,6 @@ export const useGlobalStore = defineStore({
     setGlobalState(...args) {
       this.$patch({ [args[0]]: args[1] });
     }
-  }
+  },
+  persist: piniaPersistConfig("admin-global")
 });

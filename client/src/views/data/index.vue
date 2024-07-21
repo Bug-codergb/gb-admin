@@ -1,6 +1,6 @@
 <template>
   <div class="table-box">
-    <GbTable :columns="columns" :pagination="true" :request-api="getMenuListApi" :requestAuto="true">
+    <ProTable :columns="columns" :pagination="true" :request-api="getMenuListApi" :requestAuto="true">
       <template #tableHeader>
         <el-form inline>
           <el-form-item label="用户名">
@@ -10,11 +10,11 @@
       </template>
       <template #gender> 娜娜 </template>
       <template #employee>程序员</template>
-    </GbTable>
+    </ProTable>
   </div>
 </template>
 <script setup>
-import GbTable from "@/components/GbTable/index.vue";
+import ProTable from "@/components/ProTable/index.vue";
 import { getMenuListApi } from "@/api/modules/menu.js";
 import { reactive } from "vue";
 const columns = reactive([

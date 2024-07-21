@@ -40,7 +40,7 @@
     </slot>
   </div>
 </template>
-<script setup name="GbTable" lang="jsx">
+<script setup name="ProTable" lang="jsx">
 import { defineProps, ref, onMounted, defineExpose } from "vue";
 import TableColumn from "./components/TableColumn.vue";
 import Pagination from "./components/Pagination.vue";
@@ -100,7 +100,6 @@ const props = defineProps({
 const { tableData, pageable, searchParam, searchInitParam, getTableList, search, handleSizeChange, handleCurrentChange } =
   useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, undefined);
 const tableRef = ref();
-console.log(tableData);
 onMounted(() => {
   props.requestAuto && getTableList();
 });

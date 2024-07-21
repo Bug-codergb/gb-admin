@@ -12,6 +12,7 @@ import "element-plus/theme-chalk/dark/css-vars.css";
 import * as Icons from "@element-plus/icons-vue";
 
 import router from "@/router/index.js";
+import { useGlobalStore } from "@/stores/modules/global.js";
 
 import App from "./App.vue";
 const app = createApp(App);
@@ -22,3 +23,6 @@ Object.keys(Icons).forEach(key => {
 });
 app.use(ElementPlus).use(router).use(pinia);
 app.mount(document.getElementById("app"));
+const globalStore = useGlobalStore()
+globalStore.setGlobalState("iconList", Object.keys(Icons));
+

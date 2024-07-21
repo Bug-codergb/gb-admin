@@ -1,2 +1,2 @@
-# gb-admin
+# Admin
 管理系统

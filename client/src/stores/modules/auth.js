@@ -95,6 +95,14 @@ const useAuthStore = defineStore({
             title: "供应商管理",
             icon: "Menu"
           }
+        },
+        {
+          path: "/menu/index",
+          component: "/menu/index",
+          meta: {
+            title: "菜单管理",
+            icon: "Menu"
+          }
         }
       ]; //res.data;
     }

@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce1b1d5f-1774-4998-a1ff-3956ee5dcda9" name="Changes" comment="" />
+    <list default="true" id="ce1b1d5f-1774-4998-a1ff-3956ee5dcda9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/src/routers/staticRouter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/routers/staticRouter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/src/views/login/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/views/login/index.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +37,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/guobin/vscode projecy/gb-admin",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -38,7 +53,11 @@
       <option name="presentableId" value="Default" />
       <updated>1721647915969</updated>
       <workItem from="1721647919244" duration="5000" />
+      <workItem from="1721655190368" duration="649000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

@@ -6,5 +6,5 @@ initDynamicRoutes(staticRouter);
 const router = createHashRouter([
   ...staticRouter
 ]);
-console.log(router)
+
 export default router;

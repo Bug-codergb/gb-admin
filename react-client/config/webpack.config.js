@@ -97,10 +97,15 @@ module.exports = function (env) {
           include: [appSrc],
           use: [
             {
-              loader: isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader
-            },
-            {
-              loader: "css-loader"
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                modules: {
+                  mode: "local",
+                  auto: true,
+                  localIdentName: "[path][name]__[local]--[hash:base64:5]"
+                }
+              }
             },
             {
               loader: "postcss-loader"
@@ -138,7 +143,17 @@ module.exports = function (env) {
             // 将 JS 字符串生成为 style 节点
             isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
             // 将 CSS 转化成 CommonJS 模块
-            "css-loader",
+            //"style-loader",
+            {
+              loader: "css-loader",
+              options: {
+                modules: {
+                  auto: true,
+                  localIdentName: "[name]_[local]_[hash:base64:4]"
+                },
+                importLoaders: 2
+              }
+            },
             "postcss-loader",
             // 将 Sass 编译成 CSS
             "sass-loader"

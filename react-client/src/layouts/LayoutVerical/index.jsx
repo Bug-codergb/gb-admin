@@ -2,6 +2,7 @@ import React from "react";
 import { useOutlet } from "react-router-dom";
 import { Layout } from "antd";
 import ProMenu from "../components/Menu/index";
+import Logo from "../components/Logo/index";
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
   height: 60,
@@ -40,6 +41,7 @@ const LayoutVerical = () => {
   return (
     <Layout style={layoutStyle}>
       <Sider width="210px" style={siderStyle}>
+        <Logo />
         <ProMenu />
       </Sider>
       <Layout>

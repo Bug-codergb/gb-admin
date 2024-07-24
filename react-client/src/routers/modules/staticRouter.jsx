@@ -10,10 +10,6 @@ const staticRouter = [
     element: <div>404</div>
   },
   {
-    path: "/",
-    element: <Navigate to="/login" />
-  },
-  {
     path: "/login",
     element: (
       <Suspense>
@@ -30,7 +26,7 @@ const staticRouter = [
     )
   },
   {
-    path: "/layout",
+    path: "/",
     element: (
       <Suspense>
         <LayoutVerical />

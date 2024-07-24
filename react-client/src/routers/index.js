@@ -1,9 +1,10 @@
 import { createHashRouter } from "react-router-dom";
-import { dynamicRouter } from "./dynamicRouter.jsx";
-import { staticRouter } from "./staticRouter.jsx"
-console.log(dynamicRouter)
+import { staticRouter } from "./modules/staticRouter.jsx"
+import { initDynamicRoutes } from "./modules/dynamicRouter.jsx";
+initDynamicRoutes(staticRouter);
+
 const router = createHashRouter([
-  ...dynamicRouter,
   ...staticRouter
 ]);
+console.log(router)
 export default router;

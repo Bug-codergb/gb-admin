@@ -1,12 +1,12 @@
 const routes = [
   {
     title: "数据管理",
-    path: "/data/index",
+    path: "data",
     component: "/data/index"
   },
   {
     title: "系统设置",
-    path: "/setting/index",
+    path: "setting",
     component: "/setting/index"
   }
 ];

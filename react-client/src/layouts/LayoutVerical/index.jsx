@@ -11,8 +11,8 @@ const headerStyle = {
 };
 
 const contentStyle = {
-  backgroundColor: "#ffffff",
-  padding: "16px"
+  backgroundColor: "#f0f1f3",
+  padding: "12px"
 };
 
 const siderStyle = {

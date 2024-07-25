@@ -1,4 +1,10 @@
+import React from "react";
+import ProTable from "@/components/ProTable/index.jsx";
 const Data = () => {
-  return <div>数据管理</div>;
+  return (
+    <div className="card table-box">
+      <ProTable />
+    </div>
+  );
 };
 export default Data;

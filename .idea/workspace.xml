@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ce1b1d5f-1774-4998-a1ff-3956ee5dcda9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/react-client/src/layouts/LayoutVerical/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/layouts/LayoutVerical/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-client/src/layouts/components/Menu/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/layouts/components/Menu/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-client/src/routers/dynamicRouter.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-client/src/routers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/routers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-client/src/routers/staticRouter.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-client/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/src/layouts/components/Logo/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/layouts/components/Logo/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/src/layouts/components/Logo/style.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/src/styles/common.scss" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/styles/common.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-client/src/views/data/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-client/src/views/data/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-client/src/styles/element.scss" beforeDir="false" afterPath="$PROJECT_DIR$/vue-client/src/styles/element.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

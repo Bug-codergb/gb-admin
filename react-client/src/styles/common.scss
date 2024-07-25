@@ -1,3 +1,7 @@
+:root{
+  --el-bg-color:#ffffff;
+  --el-border-color-light:#e4e7ed:
+}
 *{
   padding: 0;
   margin: 0;
@@ -6,4 +10,52 @@ ul,li{
   padding: 0;
   margin: 0;
   list-style: none;
+}
+.card{
+  box-sizing: border-box;
+  padding: 20px;
+  overflow-x: hidden;
+  background-color: var(--el-bg-color);
+  border: 1px solid var(--el-border-color-light);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgb(0 0 0 / 5%);
+}
+.table-box{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.table-main{
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  .el-table{
+    flex:1;
+    overflow-y:scroll;
+    .ant-table-wrapper{
+      height: 100%;
+      .ant-spin-nested-loading{
+        height: 100%;
+        .ant-spin-container{
+          height: 100%;
+          .ant-table{
+            height: 100%;
+            .ant-table-container{
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+              .ant-table-body{
+                flex:1;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

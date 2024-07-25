@@ -1,6 +1,5 @@
 import React from "react";
-import styles from "./style.scss";
-console.log(styles);
+import * as styles from "./style.module.scss";
 const Logo = () => {
   return <div className={styles["login-container"]}>11</div>;
 };

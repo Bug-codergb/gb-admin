@@ -4,4 +4,4 @@ import App from "./App.jsx";
 import "./styles/common.scss"
 import  "./styles/demon.css"
 const root = createRoot(document.getElementById("root"))
-root.render(<App/>)
+root.render(<App />)

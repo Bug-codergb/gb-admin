@@ -7,7 +7,12 @@ const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
   height: 60,
   backgroundColor: "#fff",
-  borderBottom: "1px solid #e5e7ec"
+  borderBottom: "1px solid #e5e7ec",
+  padding: 0,
+  lineHeight: 1,
+  display: "flex",
+  alignItems: "center",
+  padding: "0 10px"
 };
 
 const contentStyle = {

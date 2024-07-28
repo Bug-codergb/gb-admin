@@ -3,15 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { MailOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import authMenu from "@/store/index";
-const items = [];
-for (let item of authMenu) {
-  items.push({
-    key: item.path,
-    label: item.title,
-    icon: <MailOutlined />
-  });
-}
-
+import { formatMenu } from "@/utils/menu.jsx";
+const items = formatMenu(authMenu);
 const ProMenu = () => {
   const navigate = useNavigate();
   const handleMenu = ({ key, keyPath, domEvent }) => {

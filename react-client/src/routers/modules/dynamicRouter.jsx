@@ -1,22 +1,7 @@
-import React, { lazy, Suspense } from "react";
 import authRoutes from "@/store/index";
-
-const ctx = require.context("@/views", true, /\.jsx$/);
-const files = ctx.keys();
-
+import { formatRoute } from "@/utils/menu";
 function initDynamicRoutes(rootRoute) {
-  let routes = [];
-  authRoutes.forEach(item => {
-    const Component = lazy(() => import(`@/views${item.component}`));
-    routes.push({
-      path: item.path,
-      element: (
-        <Suspense>
-          <Component />
-        </Suspense>
-      )
-    });
-  });
+  let routes = formatRoute(authRoutes);
   for (let item of rootRoute) {
     if (item.path === "/") {
       item.children = routes;

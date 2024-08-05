@@ -1,6 +1,7 @@
 import { AppstoreOutlined } from "@ant-design/icons";
 import { lazy, Suspense } from "react";
 import cloneDeep from "lodash/cloneDeep";
+
 export function formatMenu(menuList) {
   if (!Array.isArray(menuList)) {
     console.warn("menuList is not Array");
@@ -30,6 +31,8 @@ export function formatRoute(menuList) {
     const Component = lazy(() => import(`@/views${item.component}`));
     arr.push({
       path: item.path,
+      loader: () => item.meta,
+      id: item.id || "",
       element: (
         <Suspense>
           <Component />

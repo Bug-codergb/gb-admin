@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { getFlatMenuList } from "@/utils/index.js";
 import { getMenuListApi } from "../../api/modules/menu";
-import {getAllBreadcrumbList} from "@/utils"
+import {getAllBreadcrumbList,getShowMenuList} from "@/utils"
 const useAuthStore = defineStore({
   id: "auth",
   state: () => {
@@ -14,6 +14,7 @@ const useAuthStore = defineStore({
     authMenuListGet: state => state.authMenuList,
     showMenuListGet: state => state.authMenuList,
     flatMenuListGet: state => getFlatMenuList(state.authMenuList),
+    showMenuListGet: state => getShowMenuList(state.authMenuList),
 
     authButtonListGet: state => state.authButtonList,
 
@@ -27,7 +28,18 @@ const useAuthStore = defineStore({
           path: "/home/index",
           component: "/home/index",
           title: "首页",
-          children: [],
+          children: [
+            {
+              path: "/user/index",
+              component: "/user/index",
+              title: "用户详情",
+              meta: {
+                title: "用户详情",
+                isHide: true,
+                activeMenu:"/home/index"
+              }
+            }
+          ],
           meta: {
             title: "首页",
             icon: "Menu"

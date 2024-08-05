@@ -9,3 +9,11 @@ export const getAllBreadcrumbList = (menuList, parent = [], result = {}) => {
   }
   return result;
 };
+
+export function getShowMenuList(menuList) {
+  let newMenuList = JSON.parse(JSON.stringify(menuList));
+  return newMenuList.filter(item => {
+    item.children && item.children.length && (item.children = getShowMenuList(item.children));
+    return (!item.meta.isHide);
+  });
+}

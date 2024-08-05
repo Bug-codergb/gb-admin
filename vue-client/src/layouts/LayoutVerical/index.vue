@@ -33,7 +33,7 @@ import useAuthStore from "@/stores/modules/auth.js";
 
 import { useGlobalStore } from "@/stores/modules/global";
 const authStore = useAuthStore();
-const menuList = computed(() => authStore.authMenuListGet);
+const menuList = computed(() => authStore.showMenuListGet);
 
 const globalStore = useGlobalStore();
 const isCollapse = computed(() => globalStore.isCollapse);

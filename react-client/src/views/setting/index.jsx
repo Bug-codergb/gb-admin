@@ -1,4 +1,4 @@
 const Setting = () => {
-  return <div>设置</div>;
+  return <div className="card table-box">设置</div>;
 };
 export default Setting;

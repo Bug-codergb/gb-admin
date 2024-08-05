@@ -1,5 +1,7 @@
 import React, { memo } from "react";
+import { useOutlet } from "react-router-dom";
 const Role = () => {
-  return <div>角色管理</div>;
+  const o = useOutlet();
+  return <div>1111</div>;
 };
 export default memo(Role);

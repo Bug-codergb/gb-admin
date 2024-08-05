@@ -2,9 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { MailOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
-import authMenu from "@/store/index";
+import { showMenuList } from "@/store/index";
 import { formatMenu } from "@/utils/menu.jsx";
-const items = formatMenu(authMenu);
+const items = formatMenu(showMenuList);
 const ProMenu = () => {
   const navigate = useNavigate();
   const handleMenu = ({ key, keyPath, domEvent }) => {

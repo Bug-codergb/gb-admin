@@ -1,4 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+
+const authSyncThunk = createAsyncThunk("/auth", async () => {
+  
+})
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -6,8 +11,14 @@ const authSlice = createSlice({
   },
   reducers: {
     
+  },
+  extraReducers: (builder) => {
+    builder.addCase(authSyncThunk.fulfilled, (state,action) => {
+      
+    })
   }
 })
+
 const reducer = authSlice.reducer;
 export {
   authSlice

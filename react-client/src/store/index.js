@@ -1,4 +1,15 @@
-import { getShowMenu,getFlatMenu } from "@/utils/menu.jsx";
+import { createSlice, configureStore } from '@reduxjs/toolkit'
+
+import { getShowMenu, getFlatMenu } from "@/utils/menu.jsx";
+import { globalSlice } from "./modules/global"
+import { authSlice} from "./modules/auth"
+const store = configureStore({
+  reducer: {
+    global: globalSlice.reducer,
+    auth:authSlice.reducer
+  }
+})
+
 const routes = [
   {
     title: "数据管理",
@@ -53,4 +64,5 @@ const routes = [
 ];
 
 export const showMenuList= getShowMenu(routes)
-export const flatMenuList=getFlatMenu(routes)
+export const flatMenuList = getFlatMenu(routes)
+export { routes,store };

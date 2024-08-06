@@ -2,6 +2,7 @@ import React from "react";
 import { useOutlet } from "react-router-dom";
 import { Layout } from "antd";
 import ProMenu from "../components/Menu/index";
+import ProHeader from "../components/Header/index";
 import Logo from "../components/Logo/index";
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
@@ -50,7 +51,9 @@ const LayoutVerical = () => {
         <ProMenu />
       </Sider>
       <Layout>
-        <Header style={headerStyle}>Header</Header>
+        <Header style={headerStyle}>
+          <ProHeader />
+        </Header>
         <Content style={contentStyle}>{childrenRouter}</Content>
         <Footer style={footerStyle}>Footer</Footer>
       </Layout>

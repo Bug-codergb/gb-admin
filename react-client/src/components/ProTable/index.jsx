@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import { Table } from "antd";
 import { Input, Pagination } from "antd";
 import * as styles from "./style.module.scss";
-console.log(styles);
 const columns = [
   {
     title: "姓名",

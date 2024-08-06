@@ -72,6 +72,7 @@ export function getShowMenu(menuList) {
 }
 export function getFlatMenu(menuList) {
   let arr = [];
+  menuList = cloneDeep(menuList);
   for (let item of menuList) {
     if (item.children && item.children.length !== 0) {
       let ret = getFlatMenu(item.children);
@@ -81,4 +82,14 @@ export function getFlatMenu(menuList) {
     arr.push(item);
   }
   return arr;
+}
+//面包屑
+export function getMenuBreadcrumb(menuList, parent = [], ret = {}) {
+  for (let item of menuList) {
+    ret[item.path] = [...parent, item];
+    if (item.children && item.children.length !== 0) {
+      getMenuBreadcrumb(item.children, ret[item.path], ret);
+    }
+  }
+  return ret;
 }

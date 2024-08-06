@@ -1,6 +1,7 @@
 :root{
   --el-bg-color:#ffffff;
-  --el-border-color-light:#e4e7ed:
+  --el-border-color-light:#e4e7ed;
+  --primary-color:pink;
 }
 *{
   padding: 0;
@@ -10,6 +11,16 @@ ul,li{
   padding: 0;
   margin: 0;
   list-style: none;
+}
+.flx-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flx-justify-between{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .card{
   box-sizing: border-box;

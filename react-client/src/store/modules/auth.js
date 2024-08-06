@@ -16,6 +16,9 @@ const authSlice = createSlice({
     builder.addCase(authSyncThunk.fulfilled, (state,action) => {
       
     })
+  },
+  selectors: {
+    
   }
 })
 

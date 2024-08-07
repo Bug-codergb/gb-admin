@@ -93,9 +93,11 @@ module.exports = function (env) {
           use: "vue-loader"
         },
         {
-          test: /\.css$/,
-          include: [appSrc],
+          test: /\.css$/i,
           use: [
+            {
+              loader: isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader
+            },
             {
               loader: "css-loader",
               options: {

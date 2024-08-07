@@ -1,6 +1,8 @@
-import React from "react";
-import { useOutlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useOutlet, useNavigation, useFetchers } from "react-router-dom";
 import { Layout } from "antd";
+
+import NProgress from "@/config/nprogress";
 import ProMenu from "../components/Menu/index";
 import ProHeader from "../components/Header/index";
 import Logo from "../components/Logo/index";
@@ -44,6 +46,18 @@ const layoutStyle = {
 };
 const LayoutVerical = () => {
   const childrenRouter = useOutlet();
+
+  const navigation = useNavigation();
+  const fetchers = useFetchers();
+  useEffect(() => {
+    const fetchersIdle = fetchers.every(f => f.state === "idle");
+    if (navigation.state === "idle" && fetchersIdle) {
+      NProgress.done();
+    } else {
+      NProgress.start();
+    }
+  }, [navigation.state, fetchers]);
+
   return (
     <Layout style={layoutStyle}>
       <Sider width="210px" style={siderStyle}>

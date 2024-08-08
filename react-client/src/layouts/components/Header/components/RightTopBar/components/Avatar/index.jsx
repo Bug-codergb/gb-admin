@@ -31,7 +31,7 @@ const Avatar = () => {
   return (
     <div>
       <Dropdown menu={{ items }} placement="bottom" arrow trigger={"click"}>
-        <AntAvatar style={{ backgroundColor: "#fde3cf", color: "#f56a00", cursor: "pointer" }} size={45}>
+        <AntAvatar style={{ backgroundColor: "#fde3cf", color: "#f56a00", cursor: "pointer" }} size={42}>
           A
         </AntAvatar>
       </Dropdown>

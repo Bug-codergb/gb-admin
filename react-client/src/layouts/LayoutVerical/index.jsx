@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useOutlet, useNavigation, useFetchers } from "react-router-dom";
 import { Layout } from "antd";
 
@@ -58,9 +59,10 @@ const LayoutVerical = () => {
     }
   }, [navigation.state, fetchers]);
 
+  const isCollapse = useSelector(state => state.global.isCollapse);
   return (
     <Layout style={layoutStyle}>
-      <Sider width="210px" style={siderStyle}>
+      <Sider width="210px" style={siderStyle} trigger={null} collapsible collapsed={isCollapse}>
         <Logo />
         <ProMenu />
       </Sider>

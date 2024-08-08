@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useNavigate, useLocation, useRouteLoaderData } from "react-router-dom";
 import { MailOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
@@ -11,12 +12,12 @@ const ProMenu = () => {
 
   const loaderData = useRouteLoaderData("vendor");
 
-  console.log(loaderData);
   const handleMenu = ({ key, keyPath, domEvent }) => {
     navigate(key);
   };
+
   return (
-    <div>
+    <div style={{ with: "100%" }}>
       <Menu
         mode="inline"
         defaultSelectedKeys={[loaderData && loaderData.activeMenu ? loaderData.activeMenu : location.pathname]}

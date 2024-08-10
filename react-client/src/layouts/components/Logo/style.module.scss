@@ -1,5 +1,14 @@
-.login-container {
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 60px;
   color: green;
   border-bottom: 1px solid #e5e7eb;
+}
+.logo-text{
+  margin: 0 0 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
 }

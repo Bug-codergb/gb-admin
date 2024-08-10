@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 
 const Login = lazy(() => import("@/views/login/index.jsx"));
 const Home = lazy(() => import("@/views/home/index.jsx"));
-const LayoutVerical = lazy(() => import("@/layouts/LayoutVerical/index.jsx"));
+const Layout = lazy(() => import("@/layouts/index.jsx"));
 const staticRouter = [
   {
     path: "/*",
@@ -29,7 +29,7 @@ const staticRouter = [
     path: "/",
     element: (
       <Suspense>
-        <LayoutVerical />
+        <Layout />
       </Suspense>
     )
   }

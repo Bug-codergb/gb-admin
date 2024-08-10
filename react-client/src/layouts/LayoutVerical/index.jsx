@@ -71,7 +71,7 @@ const LayoutVerical = () => {
           <ProHeader />
         </Header>
         <Content style={contentStyle}>{childrenRouter}</Content>
-        <Footer style={footerStyle}>Footer</Footer>
+        <Footer style={footerStyle}>guobin 2025-08-10</Footer>
       </Layout>
     </Layout>
   );

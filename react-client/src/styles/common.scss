@@ -46,7 +46,8 @@ ul,li{
   height: 100%;
   .el-table{
     flex:1;
-    overflow-y:scroll;
+    width: 100%;
+    overflow-y:hidden;
     .ant-table-wrapper{
       height: 100%;
       .ant-spin-nested-loading{
@@ -60,8 +61,19 @@ ul,li{
               flex-direction: column;
               height: 100%;
               .ant-table-body{
-                flex:1;
-                height: 100%;
+                flex:1!important;
+                width: 100%;
+                max-height: unset!important;
+                border-bottom: 1px solid #f0f0f0; 
+                .ant-table-tbody{
+                  tr{
+                    &:last-child{
+                      td{
+                        border-bottom: none!important;
+                      }
+                    }
+                  }
+                }
               }
             }
           }

@@ -4,5 +4,8 @@
   margin: 20px 0 0;
 }
 .table-header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   margin: 0 0 16px;
 }

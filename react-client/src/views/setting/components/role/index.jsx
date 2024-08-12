@@ -1,4 +1,4 @@
 const Role = () => {
-  return <div>供应商</div>;
+  return <div className="card table-box">供应商</div>;
 };
 export default Role;

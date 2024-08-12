@@ -6,7 +6,7 @@ const Account = () => {
     navigate("/vendor");
   };
   return (
-    <div>
+    <div className="table-box card">
       账号
       <Button type="primary" onClick={handleVendor}>
         去供应商页面

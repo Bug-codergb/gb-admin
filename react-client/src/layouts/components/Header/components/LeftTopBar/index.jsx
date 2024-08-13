@@ -25,20 +25,24 @@ const LeftTopBar = () => {
   const handleCollapse = () => {
     dispatch(changeKeyState({ key: "isCollapse", value: !isCollapse }));
   };
+
+  const isBreadCrumb = useSelector(state => state.global.isBreadCrumb);
   return (
     <div className={`${style["left-top-bar"]} flx-center`}>
       <div className={style["collapse"]} onClick={handleCollapse}>
         {!isCollapse && <MenuFoldOutlined />}
         {isCollapse && <MenuUnfoldOutlined />}
       </div>
-      <Breadcrumb
-        items={breadCrumb.map(item => {
-          return {
-            href: `#${item.path}`,
-            title: item.title
-          };
-        })}
-      />
+      {isBreadCrumb && (
+        <Breadcrumb
+          items={breadCrumb.map(item => {
+            return {
+              href: `#${item.path}`,
+              title: item.title
+            };
+          })}
+        />
+      )}
     </div>
   );
 };

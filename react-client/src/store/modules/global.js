@@ -2,9 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 const globalSlice = createSlice({
   name: "global",
   initialState: {
-    isBreadCrumb: false,
+    isBreadCrumb: true,
     isCollapse: false,
-    primaryColor:"#3875f6"
+    primaryColor: "#3875f6",
+    isWatermark: true,
+    isDark:false
   },
   reducers: {
     changeKeyState: (state, action) => {

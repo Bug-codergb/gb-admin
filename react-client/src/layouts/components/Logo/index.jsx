@@ -11,7 +11,7 @@ const Logo = () => {
   return (
     <div className={styles["logo-container"]} onClick={handleHomeRouter}>
       <img src="/logo.svg" width="40" />
-      {!isCollapse && <div className={`text ${styles["logo-text"]}`}>Admin</div>}
+      {!isCollapse && <div className={`logo-text ${styles["logo-text"]}`}>Admin</div>}
     </div>
   );
 };

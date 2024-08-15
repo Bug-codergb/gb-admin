@@ -10,3 +10,6 @@ const userSlice = createSlice({
     
   }
 })
+export {
+  userSlice
+}

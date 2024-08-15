@@ -2,7 +2,8 @@ import { createSlice, configureStore } from '@reduxjs/toolkit'
 
 import { getShowMenu, getFlatMenu } from "@/utils/menu.jsx";
 import { globalSlice } from "./modules/global"
-import { authSlice} from "./modules/auth"
+import { authSlice } from "./modules/auth"
+import {userSlice } from "./modules/user"
 const store = configureStore({
   reducer: {
     global: globalSlice.reducer,

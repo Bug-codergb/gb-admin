@@ -6,6 +6,7 @@ class RequestHttp{
   constructor(config) {
     this.service = axios.create(config);
     this.service.interceptors.request.use((config) => {
+      config.headers.set("Authorization", "");
       return config;
     }, (err) => {
       return Promise.reject(err);

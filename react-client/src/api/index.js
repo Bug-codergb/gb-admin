@@ -1,4 +1,7 @@
 import axios from "axios";
+import router from "@/routers/index.js";
+import { RESPONSE_CODE } from "../constant/enum";
+import { LOGIN_URL} from "@/config/url.js"
 class RequestHttp{
   constructor(config) {
     this.service = axios.create(config);
@@ -10,6 +13,11 @@ class RequestHttp{
 
     this.service.interceptors.response.use((response) => {
       const { data, config } = response;
+      if (data.code === RESPONSE_CODE.NO_AUTHORIZATION) {
+        router.replace({
+          path:LOGIN_URL
+        })
+      }
       return data;
     }, err => {
       return Promise.reject(err);

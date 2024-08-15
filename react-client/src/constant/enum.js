@@ -1,0 +1,7 @@
+const RESPONSE_CODE = {
+  "SUCCESS": 200,
+  "NO_AUTHORIZATION":401
+}
+export {
+  RESPONSE_CODE
+}

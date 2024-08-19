@@ -1,3 +1,4 @@
+import localCache from "../../utils/cache"
 import { createSlice } from '@reduxjs/toolkit'
 const globalSlice = createSlice({
   name: "global",
@@ -11,9 +12,10 @@ const globalSlice = createSlice({
   reducers: {
     changeKeyState: (state, action) => {
       const { payload } = action;
-      console.log(action)
       state[payload.key] = payload.value;
-    }
+
+      localCache.update("global",payload.key,payload.value)
+    },
   }
 })
 

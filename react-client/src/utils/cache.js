@@ -23,7 +23,7 @@ class LocalCache {
     let cache = this.get(objKey);
     !cache && (cache = {})
     cache[key] = value;
-    this.set("global",cache);
+    this.set(objKey,cache);
   }
 }
 export default new LocalCache();

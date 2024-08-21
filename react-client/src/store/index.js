@@ -7,7 +7,8 @@ import {userSlice } from "./modules/user"
 const store = configureStore({
   reducer: {
     global: globalSlice.reducer,
-    auth:authSlice.reducer
+    auth: authSlice.reducer,
+    user:userSlice.reducer
   }
 })
 

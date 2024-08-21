@@ -1,9 +1,21 @@
 import React, { memo } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, Flex } from "antd";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { changeUserKeyState } from "@/store/modules/user";
+import { HOME_URL } from "@/constant/url";
 const LoginForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onFinish = values => {
-    console.log("Received values of form: ", values);
+    try {
+      dispatch(changeUserKeyState({ key: "userName", value: values.username }));
+      dispatch(changeUserKeyState({ key: "token", value: "token" }));
+      navigate(HOME_URL);
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <div>

@@ -10,7 +10,10 @@ const authSlice = createSlice({
     authMenu:[]
   },
   reducers: {
-    
+    changeAuthKeyState: (state, action) => {
+      const { payload } = action;
+      state[payload.key] = payload.value;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(authSyncThunk.fulfilled, (state,action) => {
@@ -22,7 +25,8 @@ const authSlice = createSlice({
   }
 })
 
-const reducer = authSlice.reducer;
+
+export const {changeAuthKeyState} = authSlice.actions
 export {
   authSlice
 }

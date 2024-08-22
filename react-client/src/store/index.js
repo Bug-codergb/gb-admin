@@ -1,14 +1,15 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit'
-
+import { configureStore } from '@reduxjs/toolkit'
 import { getShowMenu, getFlatMenu } from "@/utils/menu.jsx";
 import { globalSlice } from "./modules/global"
 import { authSlice } from "./modules/auth"
-import {userSlice } from "./modules/user"
+import { userSlice } from "./modules/user"
+import {routeSlice} from "./modules/route"
 const store = configureStore({
   reducer: {
     global: globalSlice.reducer,
     auth: authSlice.reducer,
-    user:userSlice.reducer
+    user: userSlice.reducer,
+    route:routeSlice.reducer
   }
 })
 

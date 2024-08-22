@@ -1,14 +1,27 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 import LoginForm from "./components/LoginForm/index";
 import { HOME_URL } from "@/constant/url";
 import * as style from "./style.module.scss";
 import loginLeftImg from "@/assets/images/bgc.gif";
+
+import { usePrevRoute } from "@/hooks/usePrevRoute";
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const prevLocation = usePrevRoute(location);
+  const user = useSelector(state => state.user);
   const handleLogin = () => {
     navigate(HOME_URL);
   };
+
+  const route = useSelector(state => state.route);
+  useEffect(() => {
+    if (user && user.token) {
+      navigate(route && route.prevRoute ? route.prevRoute.pathname : "/data");
+    }
+  }, [location.pathname, prevLocation]);
   return (
     <div className={`${style["login-container"]} flx-center`}>
       <div className="login-box">

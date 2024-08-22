@@ -9,6 +9,7 @@ const userSlice = createSlice({
   },
   reducers: {
     changeUserKeyState(state, action) {
+      console.log(state,action)
       const { payload } = action;
       state[payload.key] = payload.value;
       localCache.update("user",payload.key,payload.value)

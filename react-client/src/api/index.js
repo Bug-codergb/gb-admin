@@ -1,7 +1,17 @@
 import axios from "axios";
-import router from "@/routers/index.js";
+ import router from "@/routers/index.js";
 import { RESPONSE_CODE } from "../constant/enum";
-import { LOGIN_URL} from "@/config/url.js"
+import { LOGIN_URL } from "@/constant/url.js"
+
+const config = {
+  // 默认地址请求地址，可在 .env.** 文件中修改
+  baseURL: process.env.API_URL ,
+  // 设置超时时间
+  timeout: 10000,
+  // 跨域时候允许携带凭证
+  withCredentials: true
+};
+
 class RequestHttp{
   constructor(config) {
     this.service = axios.create(config);

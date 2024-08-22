@@ -1,7 +1,9 @@
 import React, { memo } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Dropdown, Avatar as AntAvatar } from "antd";
 import { LOGIN_URL, HOME_URL } from "@/constant/url";
+import { changeUserKeyState } from "@/store/modules/user";
 const Avatar = () => {
   const navigate = useNavigate();
   const items = [
@@ -26,8 +28,10 @@ const Avatar = () => {
       label: <div onClick={() => handleExit()}>退出登录</div>
     }
   ];
+  const dispatch = useDispatch();
   const handleExit = () => {
-    console.log(1);
+    dispatch(changeUserKeyState({ key: "token", value: "" }));
+    dispatch(changeUserKeyState({ key: "userName", value: "" }));
     navigate(LOGIN_URL);
   };
   return (

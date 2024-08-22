@@ -1,7 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getUserAuthMenuApi } from "../../api/modules/user/index";
 
 const authSyncThunk = createAsyncThunk("/auth", async () => {
-  
+  const res = await getUserAuthMenuApi();
+  console.log(res)
+  return res.data;
 })
 
 const authSlice = createSlice({
@@ -17,16 +20,15 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(authSyncThunk.fulfilled, (state,action) => {
-      
+      state.authMenu = []
     })
   },
   selectors: {
-    
+
   }
 })
-
-
-export const {changeAuthKeyState} = authSlice.actions
+const {changeAuthKeyState } = authSlice.actions;
 export {
-  authSlice
+  authSlice,
+  changeAuthKeyState
 }

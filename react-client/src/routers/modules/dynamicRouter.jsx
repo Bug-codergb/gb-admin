@@ -1,7 +1,7 @@
-import { flatMenuList } from "@/store/index";
+//import { flatMenuList } from "@/store/index";
 import { formatRoute } from "@/utils/menu";
 function initDynamicRoutes(rootRoute) {
-  let routes = formatRoute(flatMenuList);
+  let routes = formatRoute([]);
 
   for (let item of rootRoute) {
     if (item.path === "/") {

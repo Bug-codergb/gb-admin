@@ -7,7 +7,7 @@ export const initDynamicRouter = async () => {
     const authStore = useAuthStore();
     await authStore.getAuthMenuList();
 
-    console.log(authStore.authMenuList)
+    // 路由扁平化 注册路由
     authStore.flatMenuListGet.forEach(item => {
       item.children && delete item.children;
       item.component = modules[`/src/views${item.component}.vue`];

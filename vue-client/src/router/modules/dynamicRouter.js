@@ -7,6 +7,7 @@ export const initDynamicRouter = async () => {
     const authStore = useAuthStore();
     await authStore.getAuthMenuList();
 
+    console.log(authStore.authMenuList)
     authStore.flatMenuListGet.forEach(item => {
       item.children && delete item.children;
       item.component = modules[`/src/views${item.component}.vue`];

@@ -27,19 +27,22 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, reactive, onMounted, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
+
+import { useUserStore } from "@/stores/modules/user";
+
+import { loginApi } from "@/api/modules/login.js";
 import { HOME_URL } from "@/config/index";
 
 import { initDynamicRouter } from "@/router/modules/dynamicRouter";
 import { CircleClose, UserFilled } from "@element-plus/icons-vue";
-import type { ElForm } from "element-plus";
 
 const router = useRouter();
+const userStore = useUserStore();
 
-type FormInstance = InstanceType<typeof ElForm>;
-const loginFormRef = ref<FormInstance>();
+const loginFormRef = ref();
 const loginRules = reactive({
   username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   password: [{ required: true, message: "请输入密码", trigger: "blur" }]
@@ -58,6 +61,9 @@ const login = formEl => {
     if (!valid) return;
     loading.value = true;
     try {
+      const ret = await loginApi();
+      userStore.token = "Authorization token";
+
       await initDynamicRouter();
       router.push(HOME_URL);
     } finally {

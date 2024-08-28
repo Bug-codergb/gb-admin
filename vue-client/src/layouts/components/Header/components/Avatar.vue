@@ -19,14 +19,19 @@
   </el-dropdown>
 </template>
 
-<script setup lang="ts">
+<script setup lang="js">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-
+import { useUserStore } from "@/stores/modules/user.js";
+import { LOGIN_URL } from "@/config/index.js";
 const router = useRouter();
 
+const userStore = useUserStore();
 // 退出登录
-const logout = () => {};
+const logout = () => {
+  userStore.token = "";
+  router.push(LOGIN_URL);
+};
 // 打开修改密码和个人信息弹窗
 const infoRef = ref(null);
 const passwordRef = ref(null);

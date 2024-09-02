@@ -5,6 +5,7 @@
     "@vueuse/core": "^10.11.0",
     "axios": "^1.6.8",
     "element-plus": "^2.6.3",
+    "lodash": "^4.17.21",
     "mitt": "^3.0.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",

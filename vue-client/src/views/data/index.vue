@@ -20,28 +20,23 @@ import { reactive } from "vue";
 const columns = reactive([
   {
     label: "ID",
-    prop: "id",
-    isShow: true
+    prop: "id"
   },
   {
     label: "用户名",
-    prop: "name",
-    isShow: true
+    prop: "name"
   },
   {
     label: "地址",
-    prop: "address",
-    isShow: true
+    prop: "address"
   },
   {
     label: "性别",
-    prop: "gender",
-    isShow: true
+    prop: "gender"
   },
   {
     label: "学校",
-    prop: "school",
-    isShow: true
+    prop: "school"
   },
   {
     label: "年龄",

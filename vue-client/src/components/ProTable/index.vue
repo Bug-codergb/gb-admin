@@ -41,7 +41,8 @@
   </div>
 </template>
 <script setup name="ProTable" lang="jsx">
-import { defineProps, ref, onMounted, defineExpose } from "vue";
+import { defineProps, ref, onMounted, defineExpose, computed } from "vue";
+import cloneDeep from "lodash/cloneDeep";
 import TableColumn from "./components/TableColumn.vue";
 import Pagination from "./components/Pagination.vue";
 import { useTable } from "@/hooks/useTable.js";
@@ -102,9 +103,26 @@ const { tableData, pageable, searchParam, searchInitParam, getTableList, search,
 const tableRef = ref();
 onMounted(() => {
   props.requestAuto && getTableList();
+  props.data && (pageable.value.total = props.data.length);
 });
 
-const tableColumns = ref(props.columns);
+const tableColumns = computed(() => {
+  const columns = cloneDeep(props.columns);
+  columns.forEach(item => {
+    item.isShow = item.isShow ?? true;
+  });
+  return columns;
+});
+
+//todo
+const flatColumnsFunc = columns => {
+  columns.forEach(item => {
+    console.log(item);
+    item.isShow = item.isShow ?? true;
+  });
+};
+//todo
+const flatColumns = computed(() => flatColumnsFunc(tableColumns.value));
 defineExpose({
   search,
   tableRef

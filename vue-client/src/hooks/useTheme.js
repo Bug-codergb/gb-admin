@@ -52,11 +52,24 @@ const useTheme = () => {
   const initTheme = () => {
     switchDark();
   };
+  const changeGreyOrWeak=(type,value)=>{
+    const body = document.body;
+    if(!value){
+      return body.removeAttribute("style");
+    }
+    const styles={
+      grey:"filter:grayscale(1)",
+      weak:"filter:invert(80%)"
+    }
+
+    body.setAttribute("style", styles[type]);
+  }
   return {
     initTheme,
     setMenuTheme,
     switchDark,
-    changePrimary
+    changePrimary,
+    changeGreyOrWeak
   };
 };
 export { useTheme };

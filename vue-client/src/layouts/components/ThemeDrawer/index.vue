@@ -14,11 +14,11 @@
     </div>
     <div class="theme-item">
       <span>灰色模式</span>
-      <el-switch v-model="isGrey" @change="e => changeGreyOrWeak('grey', e)" />
+      <el-switch v-model="isGrey" @change="e => changeGreyOrWeak('grey', !!e)" />
     </div>
     <div class="theme-item mb40">
       <span>色弱模式</span>
-      <el-switch v-model="isWeak" @change="e => changeGreyOrWeak('weak')" />
+      <el-switch v-model="isWeak" @change="e => changeGreyOrWeak('weak',!!e)" />
     </div>
   </el-drawer>
 </template>

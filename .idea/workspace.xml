@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce1b1d5f-1774-4998-a1ff-3956ee5dcda9" name="Changes" comment="" />
+    <list default="true" id="ce1b1d5f-1774-4998-a1ff-3956ee5dcda9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-client/src/hooks/useTheme.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-client/src/hooks/useTheme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-client/src/layouts/components/ThemeDrawer/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-client/src/layouts/components/ThemeDrawer/index.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +23,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
   <component name="ProjectId" id="2jbFYKLBJ4ct1MJRSFogAWSY2lG" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,15 +35,24 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/guobin/vscode projecy/gb-admin",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "F:/learn project/gb-admin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "D:\\webstrom\\WebStorm 2024.1.6\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.19072.23" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -47,6 +63,7 @@
       <updated>1721647915969</updated>
       <workItem from="1721647919244" duration="5000" />
       <workItem from="1721655190368" duration="649000" />
+      <workItem from="1729839939172" duration="1816000" />
     </task>
     <servers />
   </component>

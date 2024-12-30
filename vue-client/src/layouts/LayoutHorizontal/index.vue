@@ -1,5 +1,5 @@
 <template>
-<el-container class="layout">
+  <el-container class="layout">
     <el-header>
       <div class="logo flx-center">
         <img class="logo-img" src="@/assets/logo.svg" alt="logo" />
@@ -33,14 +33,13 @@
   </el-container>
 </template>
 <script setup>
-import { computed } from "vue"
-import { useRoute ,useRouter} from "vue-router"
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import SubMenu from "../components/Menu/SubMenu.vue";
 import Main from "../components/Main/index.vue";
 import ToolBarLeft from "@/layouts/components/Header/ToolBarLeft.vue";
 import ToolBarRight from "@/layouts/components/Header/ToolBarRight.vue";
 import useAuthStore from "@/stores/modules/auth.js";
-
 
 import { useGlobalStore } from "@/stores/modules/global";
 
@@ -56,7 +55,7 @@ const route = useRoute();
 const activeMenu = computed(() => (route.meta.activeMenu ? route.meta.activeMenu : route.path));
 
 const router = useRouter();
-const handleClickMenu = (subItem) => {
+const handleClickMenu = subItem => {
   if (subItem.meta.isLink) return window.open(subItem.meta.isLink, "_blank");
   router.push(subItem.path);
 };

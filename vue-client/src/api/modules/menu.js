@@ -14,7 +14,7 @@ export function getMenuListApi(params) {
             meta: {
               title: "用户详情",
               isHide: true,
-              activeMenu:"/home/index"
+              activeMenu: "/home/index"
             }
           }
         ],
@@ -27,7 +27,7 @@ export function getMenuListApi(params) {
         path: "/setting/index",
         component: "/setting/index",
         title: "系统设置",
-        redirect:"/role/index",
+        redirect: "/role/index",
         children: [
           {
             path: "/role/index",
@@ -44,22 +44,22 @@ export function getMenuListApi(params) {
               title: "账户管理",
               icon: "Menu"
             },
-            redirect:"/personal/index",
-            children:[
+            redirect: "/personal/index",
+            children: [
               {
-                path:"/personal/index",
-                component:"/account/personal/index",
-                meta:{
-                  title:"个人账户",
-                  icon:"House"
+                path: "/personal/index",
+                component: "/account/personal/index",
+                meta: {
+                  title: "个人账户",
+                  icon: "House"
                 }
               },
               {
-                path:"/system/index",
-                component:"/account/system/index",
-                meta:{
-                  title:"系统账户",
-                  icon:"House"
+                path: "/system/index",
+                component: "/account/system/index",
+                meta: {
+                  title: "系统账户",
+                  icon: "House"
                 }
               }
             ]
@@ -94,6 +94,6 @@ export function getMenuListApi(params) {
           icon: "Menu"
         }
       }
-    ])
-  })
+    ]);
+  });
 }

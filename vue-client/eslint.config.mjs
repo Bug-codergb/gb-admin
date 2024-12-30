@@ -1,8 +1,8 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginVue from "eslint-plugin-vue";
-const eslintConfigPrettier = require("eslint-config-prettier");
-const eslintPluginPrettierRecommended = require("eslint-plugin-prettier/recommended");
+import eslintConfigPrettier from "eslint-config-prettier";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 export default [
   {
     files: ["**/*.{js,mjs,cjs,vue}"],

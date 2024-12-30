@@ -17,7 +17,7 @@ class RequestHttp {
     this.service = axios.create(config);
     this.service.interceptors.request.use(
       config => {
-        config.header.Authorization = ''
+        config.header.Authorization = "";
         return config;
       },
       err => {

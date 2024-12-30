@@ -6,8 +6,8 @@ export const useUserStore = defineStore({
   state: () => {
     return {
       token: "",
-      userInfo:{name:""}
-    }
+      userInfo: { name: "" }
+    };
   },
   actions: {
     setToken(token) {
@@ -17,5 +17,5 @@ export const useUserStore = defineStore({
       this.userInfo = userInfo;
     }
   },
-  persist:piniaPersistConfig("admin-user")
-})
+  persist: piniaPersistConfig("admin-user")
+});

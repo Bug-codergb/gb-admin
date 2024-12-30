@@ -23,6 +23,5 @@ Object.keys(Icons).forEach(key => {
 });
 app.use(ElementPlus).use(router).use(pinia);
 app.mount(document.getElementById("app"));
-const globalStore = useGlobalStore()
+const globalStore = useGlobalStore();
 globalStore.setGlobalState("iconList", Object.keys(Icons));
-

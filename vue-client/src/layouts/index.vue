@@ -3,19 +3,19 @@
   <ThemeDrawer />
 </template>
 <script setup>
-import { computed } from "vue"
+import { computed } from "vue";
 import LayoutVertical from "./LayoutVertical/index.vue";
 import LayoutClassic from "./LayoutClassic/index.vue";
-import LayoutHorizontal from "./LayoutHorizontal/index.vue"
+import LayoutHorizontal from "./LayoutHorizontal/index.vue";
 import ThemeDrawer from "./components/ThemeDrawer/index.vue";
 
-import {useGlobalStore} from "@/stores/modules/global.js"
+import { useGlobalStore } from "@/stores/modules/global.js";
 
 const globalStore = useGlobalStore();
 const layout = computed(() => globalStore.layout);
-const LayoutComponents={
+const LayoutComponents = {
   vertical: LayoutVertical,
   classic: LayoutClassic,
-  transverse: LayoutHorizontal,
-}
+  transverse: LayoutHorizontal
+};
 </script>

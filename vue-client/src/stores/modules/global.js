@@ -13,7 +13,9 @@ export const useGlobalStore = defineStore({
     isGrey: false,
     // 色弱模式
     isWeak: false,
+    //主题颜色
     primary: DEFAULT_PRIMARY,
+    layout: "vertical",
   }),
   actions: {
     setGlobalState(...args) {

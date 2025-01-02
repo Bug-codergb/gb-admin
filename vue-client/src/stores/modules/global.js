@@ -4,7 +4,7 @@ import piniaPersistConfig from "@/stores/helper/persist";
 export const useGlobalStore = defineStore({
   id: "admin-global",
   state: () => ({
-    iconList:[],
+    iconList: [],
     isCollapse: false,
     breadcrumbIcon: true,
     // 深色模式
@@ -16,6 +16,10 @@ export const useGlobalStore = defineStore({
     //主题颜色
     primary: DEFAULT_PRIMARY,
     layout: "vertical",
+    // 侧边栏反转
+    asideInverted: false,
+    // 头部反转
+    headerInverted: false
   }),
   actions: {
     setGlobalState(...args) {

@@ -49,6 +49,24 @@
         </div>
       </el-tooltip>
     </div>
+    <div class="theme-item">
+      <span>
+        侧边栏反转色
+        <el-tooltip effect="dark" content="侧边栏颜色变为深色模式" placement="top">
+          <el-icon><QuestionFilled /></el-icon>
+        </el-tooltip>
+      </span>
+      <el-switch v-model="asideInverted" @change="setAsideTheme" />
+    </div>
+    <div class="theme-item mb50">
+      <span>
+        头部反转色
+        <el-tooltip effect="dark" content="头部颜色变为深色模式" placement="top">
+          <el-icon><QuestionFilled /></el-icon>
+        </el-tooltip>
+      </span>
+      <el-switch v-model="headerInverted" @change="setHeaderTheme" />
+    </div>
     <el-divider class="divider" content-position="center">
       <el-icon><ColdDrink /></el-icon>
       全局主题
@@ -59,7 +77,7 @@
     </div>
     <div class="theme-item">
       <span>暗黑模式</span>
-      <!-- <SwitchDark /> -->
+      <SwitchDark />
     </div>
     <div class="theme-item">
       <span>灰色模式</span>
@@ -67,7 +85,7 @@
     </div>
     <div class="theme-item mb40">
       <span>色弱模式</span>
-      <el-switch v-model="isWeak" @change="e => changeGreyOrWeak('weak',!!e)" />
+      <el-switch v-model="isWeak" @change="e => changeGreyOrWeak('weak', !!e)" />
     </div>
   </el-drawer>
 </template>
@@ -78,13 +96,13 @@ import mittBus from "@/utils/mittBus";
 import { DEFAULT_PRIMARY } from "@/config";
 import { useGlobalStore } from "@/stores/modules/global";
 import { useTheme } from "@/hooks/useTheme";
-//import SwitchDark from "@/components/SwitchDark/index.vue";
+import SwitchDark from "@/components/SwitchDark/index.vue";
 
 const drawerVisible = ref(false);
 mittBus.on("openThemeDrawer", () => ((drawerVisible.value = true), console.log(12)));
 
 const globalStore = useGlobalStore();
-const { primary, isGrey, isWeak,layout } = storeToRefs(globalStore);
+const { primary, isGrey, isWeak, layout, asideInverted, headerInverted } = storeToRefs(globalStore);
 const colorList = [
   DEFAULT_PRIMARY,
   "#daa96e",
@@ -97,12 +115,12 @@ const colorList = [
   "#f39c12",
   "#9b59b6"
 ];
-const { changePrimary, changeGreyOrWeak } = useTheme();
+const { changePrimary, changeGreyOrWeak, setAsideTheme, setHeaderTheme } = useTheme();
 
-const setLayout=(key)=>{
-  console.log(key)
-  globalStore.setGlobalState("layout",key);
-}
+const setLayout = key => {
+  console.log(key);
+  globalStore.setGlobalState("layout", key);
+};
 </script>
 <style lang="scss" scoped>
 @import "./index";

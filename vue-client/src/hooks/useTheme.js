@@ -9,16 +9,19 @@ import { getLightColor, getDarkColor } from "@/utils/color";
 
 const useTheme = () => {
   const globalStore = useGlobalStore();
-  const { primary, isDark, isGrey, isWeak, } = storeToRefs(globalStore);
+  const { primary, isDark, isGrey, isWeak, layout, asideInverted, headerInverted } = storeToRefs(globalStore);
 
   const switchDark = () => {
     const html = document.documentElement;
+    if (isDark.value) html.setAttribute("class", "dark");
+    else html.setAttribute("class", "");
     changePrimary(primary.value);
     setAsideTheme();
     setMenuTheme();
+    setHeaderTheme();
   };
-   // 修改主题颜色
-   const changePrimary = (val) => {
+  // 修改主题颜色
+  const changePrimary = val => {
     if (!val) {
       val = DEFAULT_PRIMARY;
       ElMessage({ type: "success", message: `主题颜色已重置为 ${DEFAULT_PRIMARY}` });
@@ -35,41 +38,68 @@ const useTheme = () => {
     }
     globalStore.setGlobalState("primary", val);
   };
-  const setAsideTheme = () => {
-    let type = "light";
-    const theme = asideTheme[type];
-    for (const [key, value] of Object.entries(theme)) {
-      document.documentElement.style.setProperty(key, value);
-    }
-  };
+
+  // 设置菜单样式
   const setMenuTheme = () => {
     let type = "light";
+    if (layout.value === "horizontal" && headerInverted.value) type = "inverted";
+    if (layout.value !== "horizontal" && asideInverted.value) type = "inverted";
+    if (isDark.value) type = "dark";
     const theme = menuTheme[type];
     for (const [key, value] of Object.entries(theme)) {
       document.documentElement.style.setProperty(key, value);
     }
   };
+
+  const setAsideTheme = () => {
+    let type = "light";
+    if (asideInverted.value) {
+      type = "inverted";
+    }
+    if (isDark.value) {
+      type = "dark";
+    }
+    console.log(asideInverted.value);
+    const theme = asideTheme[type];
+    for (const [key, value] of Object.entries(theme)) {
+      document.documentElement.style.setProperty(key, value);
+    }
+    setMenuTheme();
+  };
+  const setHeaderTheme = () => {
+    let type = "light";
+    if (headerInverted.value) type = "inverted";
+    if (isDark.value) type = "dark";
+    const theme = headerTheme[type];
+    for (const [key, value] of Object.entries(theme)) {
+      document.documentElement.style.setProperty(key, value);
+    }
+    setMenuTheme();
+  };
+
   const initTheme = () => {
     switchDark();
   };
-  const changeGreyOrWeak=(type,value)=>{
+  const changeGreyOrWeak = (type, value) => {
     const body = document.body;
-    if(!value){
+    if (!value) {
       return body.removeAttribute("style");
     }
-    const styles={
-      grey:"filter:grayscale(1)",
-      weak:"filter:invert(80%)"
-    }
+    const styles = {
+      grey: "filter:grayscale(1)",
+      weak: "filter:invert(80%)"
+    };
 
     body.setAttribute("style", styles[type]);
-  }
+  };
   return {
     initTheme,
     setMenuTheme,
     switchDark,
     changePrimary,
-    changeGreyOrWeak
+    changeGreyOrWeak,
+    setAsideTheme,
+    setHeaderTheme
   };
 };
 export { useTheme };

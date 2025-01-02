@@ -24,13 +24,13 @@ export function getMenuListApi(params) {
         }
       },
       {
-        path: "/setting/index",
+        path: "/setting",
         component: "/setting/index",
         title: "系统设置",
-        redirect: "/role/index",
+        redirect: "/setting/role",
         children: [
           {
-            path: "/role/index",
+            path: "/setting/role",
             component: "/role/index",
             meta: {
               title: "角色管理",
@@ -38,16 +38,16 @@ export function getMenuListApi(params) {
             }
           },
           {
-            path: "/account/index",
+            path: "/setting/account",
             component: "/account/index",
             meta: {
               title: "账户管理",
               icon: "Menu"
             },
-            redirect: "/personal/index",
+            redirect: "/setting/account/personal",
             children: [
               {
-                path: "/personal/index",
+                path: "/setting/account/personal",
                 component: "/account/personal/index",
                 meta: {
                   title: "个人账户",
@@ -55,7 +55,7 @@ export function getMenuListApi(params) {
                 }
               },
               {
-                path: "/system/index",
+                path: "/setting/account/system",
                 component: "/account/system/index",
                 meta: {
                   title: "系统账户",

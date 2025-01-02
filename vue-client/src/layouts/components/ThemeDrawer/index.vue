@@ -87,6 +87,15 @@
       <span>色弱模式</span>
       <el-switch v-model="isWeak" @change="e => changeGreyOrWeak('weak', !!e)" />
     </div>
+    <!-- 界面设置 -->
+    <el-divider class="divider" content-position="center">
+      <el-icon><Setting /></el-icon>
+      界面设置
+    </el-divider>
+    <div class="theme-item">
+      <span>水印</span>
+      <el-switch v-model="watermark" />
+    </div>
   </el-drawer>
 </template>
 <script setup>
@@ -102,7 +111,7 @@ const drawerVisible = ref(false);
 mittBus.on("openThemeDrawer", () => ((drawerVisible.value = true), console.log(12)));
 
 const globalStore = useGlobalStore();
-const { primary, isGrey, isWeak, layout, asideInverted, headerInverted } = storeToRefs(globalStore);
+const { primary, isGrey, isWeak, layout, asideInverted, headerInverted, watermark } = storeToRefs(globalStore);
 const colorList = [
   DEFAULT_PRIMARY,
   "#daa96e",

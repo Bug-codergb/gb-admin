@@ -2,8 +2,7 @@ import { defineStore } from "pinia";
 import { getFlatMenuList } from "@/utils/index.js";
 import { getMenuListApi } from "../../api/modules/menu";
 import { getAllBreadcrumbList, getShowMenuList } from "@/utils";
-const useAuthStore = defineStore({
-  id: "auth",
+const useAuthStore = defineStore("auth", {
   state: () => {
     return {
       authMenuList: [],

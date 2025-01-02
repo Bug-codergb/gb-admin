@@ -1,8 +1,7 @@
 import { defineStore } from "pinia";
 import { DEFAULT_PRIMARY } from "@/config";
 import piniaPersistConfig from "@/stores/helper/persist";
-export const useGlobalStore = defineStore({
-  id: "admin-global",
+export const useGlobalStore = defineStore("admin-global", {
   state: () => ({
     iconList: [],
     isCollapse: false,
@@ -19,7 +18,8 @@ export const useGlobalStore = defineStore({
     // 侧边栏反转
     asideInverted: false,
     // 头部反转
-    headerInverted: false
+    headerInverted: false,
+    watermark: false
   }),
   actions: {
     setGlobalState(...args) {

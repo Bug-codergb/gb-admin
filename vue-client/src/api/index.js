@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useUserStore } from "@/stores/modules/user";
 import { ResultEnum } from "@/enum/httpEnum.js";
 import { ElMessage } from "element-plus";
 import router from "@/router";
@@ -17,7 +18,10 @@ class RequestHttp {
     this.service = axios.create(config);
     this.service.interceptors.request.use(
       config => {
-        config.header.Authorization = "";
+        const userStore = useUserStore();
+        if (config.headers && typeof config.headers.set === "function") {
+          config.headers.Authorization = userStore.token;
+        }
         return config;
       },
       err => {
@@ -27,8 +31,10 @@ class RequestHttp {
     this.service.interceptors.response.use(
       response => {
         const { data, config } = response;
+        const userStore = useUserStore();
         // 登录失效
         if (data.code == ResultEnum.OVERDUE) {
+          userStore.setToken("");
           router.replace(LOGIN_URL);
           ElMessage.error(data.msg);
           return Promise.reject(data);

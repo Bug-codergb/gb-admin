@@ -1,8 +1,7 @@
 import { defineStore } from "pinia";
 import piniaPersistConfig from "@/stores/helper/persist";
 
-export const useUserStore = defineStore({
-  id: "admin-user",
+export const useUserStore = defineStore("admin-user", {
   state: () => {
     return {
       token: "",

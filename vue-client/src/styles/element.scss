@@ -119,21 +119,24 @@
 
   // 表格 header 样式
   .table-header {
+    display: flex;
+    flex-wrap: nowrap;
     .header-button-lf,
     .header-button-ri {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      margin-bottom: 15px;
       gap: 15px 12px;
-      margin-bottom: 0;
       .el-button:not(.el-input .el-button) {
         margin-left: 0;
       }
     }
     .header-button-lf {
-      float: left;
+      margin-bottom: 0;
+      flex:1;
     }
     .header-button-ri {
-      float: right;
+      
     }
   }
 

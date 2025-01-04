@@ -1,11 +1,20 @@
 <template>
   <div class="card table-main">
-    <div class="table-header">
-      <div class="header-button-lf">
-        <slot name="tableHeader" />
+    <div class="table-header" :class="{ 'flx-align-center': !isExpand, 'flx-items-end': isExpand }">
+      <div class="flx">
+        <div class="header-button-lf" ref="tableHeaderLeft" :class="{ 'no-expand': !isExpand }">
+          <slot name="tableHeader" />
+        </div>
+        <div v-if="toolButton" class="header-button-ri">
+          <slot name="toolButton"> </slot>
+        </div>
       </div>
-      <div v-if="toolButton" class="header-button-ri">
-        <slot name="toolButton"> </slot>
+      <div class="flx-center expand" @click="handleExpand">
+        <div class="expand-text">
+          {{ isExpand ? "收起" : "展开" }}
+        </div>
+        <el-icon v-if="!isExpand"><ArrowDown /></el-icon>
+        <el-icon v-if="isExpand"><ArrowUp /></el-icon>
       </div>
     </div>
     <el-table ref="tableRef" :data="data ?? tableData" :border="border">
@@ -41,7 +50,7 @@
   </div>
 </template>
 <script setup name="ProTable" lang="jsx">
-import { defineProps, ref, onMounted, defineExpose, computed } from "vue";
+import { defineProps, ref, onMounted, defineExpose, computed, useTemplateRef, nextTick } from "vue";
 import cloneDeep from "lodash/cloneDeep";
 import TableColumn from "./components/TableColumn.vue";
 import Pagination from "./components/Pagination.vue";
@@ -87,7 +96,7 @@ const props = defineProps({
   },
   toolButton: {
     type: Boolean,
-    default: false
+    default: true
   },
   rowKey: {
     type: String,
@@ -98,6 +107,37 @@ const props = defineProps({
     default: 1
   }
 });
+const isExpand = ref(false);
+const tableHeaderLeftRef = useTemplateRef("tableHeaderLeft");
+const itemHeight = ref(0);
+nextTick(() => {
+  const tableHeaderLeftEl = tableHeaderLeftRef.value;
+  let children = tableHeaderLeftEl.children;
+  while (children && children.length < 2) {
+    children = children[0] ? children[0].children : null;
+  }
+  if (children && children.length > 1) {
+    isExpand.value = false;
+    const firstChild = children[0];
+    const style = getComputedStyle(firstChild);
+    itemHeight.value = children[0].offsetHeight + parseInt(style.marginBottom);
+    tableHeaderLeftEl.style.height = `${itemHeight.value}px`;
+  } else {
+    isExpand.value = true;
+  }
+  console.log(itemHeight.value);
+  console.log(isExpand.value);
+});
+const handleExpand = () => {
+  isExpand.value = !isExpand.value;
+  const tableHeaderLeftEl = tableHeaderLeftRef.value;
+  if (isExpand.value) {
+    tableHeaderLeftEl.style.height = `auto`;
+  } else {
+    tableHeaderLeftEl.style.height = `${itemHeight.value}px`;
+  }
+};
+
 const { tableData, pageable, searchParam, searchInitParam, getTableList, search, handleSizeChange, handleCurrentChange } =
   useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, undefined);
 const tableRef = ref();
@@ -128,3 +168,21 @@ defineExpose({
   tableRef
 });
 </script>
+<style lang="scss" scoped>
+.expand {
+  cursor: pointer;
+  margin: 0 0 15px 10px;
+  .expand-text {
+    white-space: nowrap;
+    margin: 0 3px 0 0;
+    color: var(--el-color-primary);
+    font-size: 14px;
+  }
+  .el-icon {
+    color: var(--el-color-primary);
+  }
+}
+.no-expand {
+  overflow: hidden;
+}
+</style>

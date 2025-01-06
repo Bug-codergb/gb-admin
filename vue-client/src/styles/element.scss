@@ -121,6 +121,7 @@
   .table-header {
     display: flex;
     flex-wrap: nowrap;
+   
     .header-button-lf,
     .header-button-ri {
       display: flex;
@@ -134,6 +135,7 @@
     .header-button-lf {
       margin-bottom: 0;
       flex:1;
+      transition: all 0.3s;
     }
     .header-button-ri {
       

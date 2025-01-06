@@ -110,8 +110,10 @@ const props = defineProps({
 const isExpand = ref(false);
 const tableHeaderLeftRef = useTemplateRef("tableHeaderLeft");
 const itemHeight = ref(0);
+const tableHeaderLeftRawHeight = ref(0);
 nextTick(() => {
   const tableHeaderLeftEl = tableHeaderLeftRef.value;
+  tableHeaderLeftRawHeight.value = tableHeaderLeftEl.offsetHeight;
   let children = tableHeaderLeftEl.children;
   while (children && children.length < 2) {
     children = children[0] ? children[0].children : null;
@@ -132,7 +134,7 @@ const handleExpand = () => {
   isExpand.value = !isExpand.value;
   const tableHeaderLeftEl = tableHeaderLeftRef.value;
   if (isExpand.value) {
-    tableHeaderLeftEl.style.height = `auto`;
+    tableHeaderLeftEl.style.height = `auto`; //`${tableHeaderLeftRawHeight.value}px`;
   } else {
     tableHeaderLeftEl.style.height = `${itemHeight.value}px`;
   }

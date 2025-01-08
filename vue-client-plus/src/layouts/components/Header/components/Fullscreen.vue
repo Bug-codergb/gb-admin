@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="js">
 import { onMounted, ref } from "vue";
 import { ElMessage } from "element-plus";
 import screenfull from "screenfull";

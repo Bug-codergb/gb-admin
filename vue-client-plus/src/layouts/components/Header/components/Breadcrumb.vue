@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="js">
 import { computed } from "vue";
 import { HOME_URL } from "@/config";
 import { useRoute, useRouter } from "vue-router";
@@ -42,7 +42,7 @@ const breadcrumbList = computed(() => {
 });
 
 // Click Breadcrumb
-const onBreadcrumbClick = (item: Menu.MenuOptions, index: number) => {
+const onBreadcrumbClick = (item, index) => {
   if (index !== breadcrumbList.value.length - 1) router.push(item.path);
 };
 </script>

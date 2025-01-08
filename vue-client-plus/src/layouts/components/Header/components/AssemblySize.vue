@@ -16,10 +16,9 @@
   </el-dropdown>
 </template>
 
-<script setup lang="ts">
+<script setup lang="js">
 import { computed } from "vue";
 import { useGlobalStore } from "@/stores/modules/global";
-import { AssemblySizeType } from "@/stores/interface";
 
 const globalStore = useGlobalStore();
 const assemblySize = computed(() => globalStore.assemblySize);
@@ -30,7 +29,7 @@ const assemblySizeList = [
   { label: "小型", value: "small" }
 ];
 
-const setAssemblySize = (item: AssemblySizeType) => {
+const setAssemblySize = item => {
   if (assemblySize.value === item) return;
   globalStore.setGlobalState("assemblySize", item);
 };

@@ -32,9 +32,8 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="js">
 import { ref, computed, nextTick, watch } from "vue";
-import { InputInstance } from "element-plus";
 import { Search } from "@element-plus/icons-vue";
 import { useAuthStore } from "@/stores/modules/auth";
 import { useRouter } from "vue-router";
@@ -45,13 +44,13 @@ const authStore = useAuthStore();
 const menuList = computed(() => authStore.flatMenuListGet.filter(item => !item.meta.isHide));
 
 const activePath = ref("");
-const mouseoverMenuItem = (menu: Menu.MenuOptions) => {
+const mouseoverMenuItem = menu => {
   activePath.value = menu.path;
 };
 
-const menuInputRef = ref<InputInstance | null>(null);
-const isShowSearch = ref<boolean>(false);
-const searchMenu = ref<string>("");
+const menuInputRef = ref(null);
+const isShowSearch = ref(false);
+const searchMenu = ref("");
 
 watch(isShowSearch, val => {
   if (val) {
@@ -70,7 +69,7 @@ const handleOpen = () => {
   });
 };
 
-const searchList = ref<Menu.MenuOptions[]>([]);
+const searchList = ref([]);
 const updateSearchList = () => {
   searchList.value = searchMenu.value
     ? menuList.value.filter(
@@ -87,8 +86,8 @@ const debouncedUpdateSearchList = useDebounceFn(updateSearchList, 300);
 
 watch(searchMenu, debouncedUpdateSearchList);
 
-const menuListRef = ref<Element | null>(null);
-const keyPressUpOrDown = (direction: number) => {
+const menuListRef = ref(null);
+const keyPressUpOrDown = direction => {
   const length = searchList.value.length;
   if (length === 0) return;
   const index = searchList.value.findIndex(item => item.path === activePath.value);
@@ -101,7 +100,7 @@ const keyPressUpOrDown = (direction: number) => {
   });
 };
 
-const keyboardOperation = (event: KeyboardEvent) => {
+const keyboardOperation = event => {
   if (event.key === "ArrowUp") {
     event.preventDefault();
     keyPressUpOrDown(-1);

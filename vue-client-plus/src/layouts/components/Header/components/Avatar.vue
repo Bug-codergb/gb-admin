@@ -23,7 +23,7 @@
   <PasswordDialog ref="passwordRef"></PasswordDialog>
 </template>
 
-<script setup lang="ts">
+<script setup lang="js">
 import { ref } from "vue";
 import { LOGIN_URL } from "@/config";
 import { useRouter } from "vue-router";
@@ -56,9 +56,9 @@ const logout = () => {
 };
 
 // 打开修改密码和个人信息弹窗
-const infoRef = ref<InstanceType<typeof InfoDialog> | null>(null);
-const passwordRef = ref<InstanceType<typeof PasswordDialog> | null>(null);
-const openDialog = (ref: string) => {
+const infoRef = ref(null);
+const passwordRef = ref(null);
+const openDialog = ref => {
   if (ref == "infoRef") infoRef.value?.openDialog();
   if (ref == "passwordRef") passwordRef.value?.openDialog();
 };

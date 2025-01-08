@@ -6,9 +6,8 @@
   </el-watermark>
 </template>
 
-<script setup lang="ts" name="layout">
-import { computed, reactive, watch, type Component } from "vue";
-import { LayoutType } from "@/stores/interface";
+<script setup lang="js" name="layout">
+import { computed, reactive, watch } from "vue";
 import { useGlobalStore } from "@/stores/modules/global";
 import ThemeDrawer from "./components/ThemeDrawer/index.vue";
 import LayoutVertical from "./LayoutVertical/index.vue";
@@ -16,7 +15,7 @@ import LayoutClassic from "./LayoutClassic/index.vue";
 import LayoutTransverse from "./LayoutTransverse/index.vue";
 import LayoutColumns from "./LayoutColumns/index.vue";
 
-const LayoutComponents: Record<LayoutType, Component> = {
+const LayoutComponents = {
   vertical: LayoutVertical,
   classic: LayoutClassic,
   transverse: LayoutTransverse,

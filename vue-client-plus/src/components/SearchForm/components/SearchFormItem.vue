@@ -22,16 +22,25 @@
   </component>
 </template>
 
-<script setup lang="ts" name="SearchFormItem">
+<script setup lang="js" name="SearchFormItem">
 import { computed, inject, ref } from "vue";
 import { handleProp } from "@/utils";
 import { ColumnProps } from "@/components/ProTable/interface";
 
-interface SearchFormItem {
-  column: ColumnProps;
-  searchParam: { [key: string]: any };
-}
-const props = defineProps<SearchFormItem>();
+const props = defineProps({
+  column: {
+    type: Object,
+    default() {
+      return {};
+    }
+  },
+  searchParam: {
+    type: Object,
+    default() {
+      return {};
+    }
+  }
+});
 
 // Re receive SearchParam
 const _searchParam = computed(() => props.searchParam);
@@ -51,7 +60,7 @@ const columnEnum = computed(() => {
   let enumData = enumMap.value.get(props.column.prop);
   if (!enumData) return [];
   if (props.column.search?.el === "select-v2" && props.column.fieldNames) {
-    enumData = enumData.map((item: { [key: string]: any }) => {
+    enumData = enumData.map(item => {
       return { ...item, label: item[fieldNames.value.label], value: item[fieldNames.value.value] };
     });
   }

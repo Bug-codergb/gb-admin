@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup lang="ts" name="Grid">
+<script setup lang="js" name="Grid">
 import {
   ref,
   watch,
@@ -19,29 +19,41 @@ import {
   VNodeArrayChildren,
   VNode
 } from "vue";
-import type { BreakPoint } from "./interface/index";
 
-type Props = {
-  cols?: number | Record<BreakPoint, number>;
-  collapsed?: boolean;
-  collapsedRows?: number;
-  gap?: [number, number] | number;
-};
-
-const props = withDefaults(defineProps<Props>(), {
-  cols: () => ({ xs: 1, sm: 2, md: 2, lg: 3, xl: 4 }),
-  collapsed: false,
-  collapsedRows: 1,
-  gap: 0
+const props = defineProps({
+  cols: {
+    type: Object,
+    default() {
+      return {
+        xs: 1,
+        sm: 2,
+        md: 2,
+        lg: 3,
+        xl: 4
+      };
+    }
+  },
+  collapsed: {
+    type: Boolean,
+    default: false
+  },
+  collapsedRows: {
+    type: Number,
+    default: 1
+  },
+  gap: {
+    type: Number,
+    default: 0
+  }
 });
 
 onBeforeMount(() => props.collapsed && findIndex());
 onMounted(() => {
-  resize({ target: { innerWidth: window.innerWidth } } as unknown as UIEvent);
+  resize({ target: { innerWidth: window.innerWidth } });
   window.addEventListener("resize", resize);
 });
 onActivated(() => {
-  resize({ target: { innerWidth: window.innerWidth } } as unknown as UIEvent);
+  resize({ target: { innerWidth: window.innerWidth } });
   window.addEventListener("resize", resize);
 });
 onUnmounted(() => {
@@ -52,8 +64,8 @@ onDeactivated(() => {
 });
 
 // 监听屏幕变化
-const resize = (e: UIEvent) => {
-  let width = (e.target as Window).innerWidth;
+const resize = e => {
+  let width = e.target.innerWidth;
   switch (!!width) {
     case width < 768:
       breakPoint.value = "xs";
@@ -77,7 +89,7 @@ const resize = (e: UIEvent) => {
 provide("gap", Array.isArray(props.gap) ? props.gap[0] : props.gap);
 
 // 注入响应式断点
-let breakPoint = ref<BreakPoint>("xl");
+let breakPoint = ref("xl");
 provide("breakPoint", breakPoint);
 
 // 注入要开始折叠的 index
@@ -92,12 +104,12 @@ const gridCols = computed(() => {
 provide("cols", gridCols);
 
 // 寻找需要开始折叠的字段 index
-const slots = useSlots().default!();
+const slots = useSlots().default();
 
 const findIndex = () => {
-  let fields: VNodeArrayChildren = [];
-  let suffix: VNode | null = null;
-  slots.forEach((slot: any) => {
+  let fields = [];
+  let suffix = null;
+  slots.forEach(slot => {
     // suffix
     if (typeof slot.type === "object" && slot.type.name === "GridItem" && slot.props?.suffix !== undefined) suffix = slot;
     // slot children
@@ -108,15 +120,15 @@ const findIndex = () => {
   let suffixCols = 0;
   if (suffix) {
     suffixCols =
-      ((suffix as VNode).props![breakPoint.value]?.span ?? (suffix as VNode).props?.span ?? 1) +
-      ((suffix as VNode).props![breakPoint.value]?.offset ?? (suffix as VNode).props?.offset ?? 0);
+      (suffix.props[breakPoint.value]?.span ?? suffix.props?.span ?? 1) +
+      (suffix.props[breakPoint.value]?.offset ?? suffix.props?.offset ?? 0);
   }
   try {
     let find = false;
     fields.reduce((prev = 0, current, index) => {
       prev +=
-        ((current as VNode)!.props![breakPoint.value]?.span ?? (current as VNode)!.props?.span ?? 1) +
-        ((current as VNode)!.props![breakPoint.value]?.offset ?? (current as VNode)!.props?.offset ?? 0);
+        (current.props[breakPoint.value]?.span ?? current.props?.span ?? 1) +
+        (current.props[breakPoint.value]?.offset ?? current.props?.offset ?? 0);
       if (Number(prev) > props.collapsedRows * gridCols.value - suffixCols) {
         hiddenIndex.value = index;
         find = true;

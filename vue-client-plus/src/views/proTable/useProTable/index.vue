@@ -42,8 +42,7 @@
         <el-button type="primary" link :icon="Delete" @click="deleteAccount(scope.row)">删除</el-button>
       </template>
     </ProTable>
-    <UserDrawer ref="drawerRef" />
-    <ImportExcel ref="dialogRef" />
+    <!--    <ImportExcel ref="dialogRef" />-->
   </div>
 </template>
 
@@ -55,8 +54,8 @@ import { useDownload } from "@/hooks/useDownload";
 import { useAuthButtons } from "@/hooks/useAuthButtons";
 import { ElMessage, ElMessageBox } from "element-plus";
 import ProTable from "@/components/ProTable/index.vue";
-import ImportExcel from "@/components/ImportExcel/index.vue";
-import UserDrawer from "@/views/proTable/components/UserDrawer.vue";
+//import ImportExcel from "@/components/ImportExcel/index.vue";
+//import UserDrawer from "@/views/proTable/components/UserDrawer.vue";
 
 import { CirclePlus, Delete, EditPen, Download, Upload, View, Refresh } from "@element-plus/icons-vue";
 import {

@@ -32,31 +32,51 @@
     </el-form>
   </div>
 </template>
-<script setup lang="ts" name="SearchForm">
+<script setup lang="js" name="SearchForm">
 import { computed, ref } from "vue";
-import { ColumnProps } from "@/components/ProTable/interface";
-import { BreakPoint } from "@/components/Grid/interface";
+//import { ColumnProps } from "@/components/ProTable/interface";
+//import { BreakPoint } from "@/components/Grid/interface";
 import { Delete, Search, ArrowDown, ArrowUp } from "@element-plus/icons-vue";
-import SearchFormItem from "./components/SearchFormItem.vue";
-import Grid from "@/components/Grid/index.vue";
-import GridItem from "@/components/Grid/components/GridItem.vue";
-
-interface ProTableProps {
-  columns?: ColumnProps[]; // 搜索配置列
-  searchParam?: { [key: string]: any }; // 搜索参数
-  searchCol: number | Record<BreakPoint, number>;
-  search: (params: any) => void; // 搜索方法
-  reset: (params: any) => void; // 重置方法
-}
+//import SearchFormItem from "./components/SearchFormItem.vue";
+//import Grid from "@/components/Grid/index.vue";
+//import GridItem from "@/components/Grid/components/GridItem.vue";
 
 // 默认值
-const props = withDefaults(defineProps<ProTableProps>(), {
-  columns: () => [],
-  searchParam: () => ({})
+const props = defineProps({
+  searchCol: {
+    type: [Number, Object],
+    default() {
+      return {};
+    }
+  },
+  columns: {
+    type: Array,
+    default() {
+      return [];
+    }
+  },
+  searchParam: {
+    type: Object,
+    default() {
+      return {};
+    }
+  },
+  search: {
+    type: Function,
+    default() {
+      return () => {};
+    }
+  },
+  reset: {
+    type: Function,
+    default() {
+      return () => {};
+    }
+  }
 });
 
 // 获取响应式设置
-const getResponsive = (item: ColumnProps) => {
+const getResponsive = item => {
   return {
     span: item.search?.span,
     offset: item.search?.offset ?? 0,
@@ -73,15 +93,15 @@ const collapsed = ref(true);
 
 // 获取响应式断点
 const gridRef = ref();
-const breakPoint = computed<BreakPoint>(() => gridRef.value?.breakPoint);
+const breakPoint = computed(() => gridRef.value?.breakPoint);
 
 // 判断是否显示 展开/合并 按钮
 const showCollapse = computed(() => {
   let show = false;
   props.columns.reduce((prev, current) => {
     prev +=
-      (current.search![breakPoint.value]?.span ?? current.search?.span ?? 1) +
-      (current.search![breakPoint.value]?.offset ?? current.search?.offset ?? 0);
+      (current.search[breakPoint.value]?.span ?? current.search?.span ?? 1) +
+      (current.search[breakPoint.value]?.offset ?? current.search?.offset ?? 0);
     if (typeof props.searchCol !== "number") {
       if (prev >= props.searchCol[breakPoint.value]) show = true;
     } else {

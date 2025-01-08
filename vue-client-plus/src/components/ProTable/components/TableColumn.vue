@@ -8,14 +8,14 @@ import { inject, ref, useSlots } from "vue";
 import { filterEnum, formatValue, handleProp, handleRowAccordingToProp } from "@/utils";
 
 //defineProps<{ column: ColumnProps }>();
-const props= defineProps({
-  column:{
-    type:Object,
-    default(){
-      return {}
+defineProps({
+  column: {
+    type: Object,
+    default() {
+      return {};
     }
   }
-})
+});
 const slots = useSlots();
 
 const enumMap = inject("enumMap", ref(new Map()));
@@ -34,7 +34,7 @@ const getTagType = (item, scope) => {
   );
 };
 
-const RenderTableColumn = (item) => {
+const RenderTableColumn = item => {
   return (
     <>
       {item.isShow && (
@@ -44,14 +44,14 @@ const RenderTableColumn = (item) => {
           showOverflowTooltip={item.showOverflowTooltip ?? item.prop !== "operation"}
         >
           {{
-            default: (scope) => {
+            default: scope => {
               if (item._children) return item._children.map(child => RenderTableColumn(child));
               if (item.render) return item.render(scope);
               if (item.prop && slots[handleProp(item.prop)]) return slots[handleProp(item.prop)](scope);
               if (item.tag) return <el-tag type={getTagType(item, scope)}>{renderCellData(item, scope)}</el-tag>;
               return renderCellData(item, scope);
             },
-            header: (scope) => {
+            header: scope => {
               if (item.headerRender) return item.headerRender(scope);
               if (item.prop && slots[`${handleProp(item.prop)}Header`]) return slots[`${handleProp(item.prop)}Header`](scope);
               return item.label;

@@ -3,38 +3,60 @@
     <slot></slot>
   </div>
 </template>
-<script setup lang="ts" name="GridItem">
+<script setup lang="js" name="GridItem">
 import { computed, inject, Ref, ref, useAttrs, watch } from "vue";
-import { BreakPoint, Responsive } from "../interface/index";
 
-type Props = {
-  offset?: number;
-  span?: number;
-  suffix?: boolean;
-  xs?: Responsive;
-  sm?: Responsive;
-  md?: Responsive;
-  lg?: Responsive;
-  xl?: Responsive;
-};
-
-const props = withDefaults(defineProps<Props>(), {
-  offset: 0,
-  span: 1,
-  suffix: false,
-  xs: undefined,
-  sm: undefined,
-  md: undefined,
-  lg: undefined,
-  xl: undefined
+const props = defineProps({
+  offset: {
+    type: Number,
+    default: 0
+  },
+  span: {
+    type: Number,
+    default: 1
+  },
+  suffix: {
+    type: Boolean,
+    default: false
+  },
+  xs: {
+    type: Object,
+    default() {
+      return { span: 0, offset: 0 };
+    }
+  },
+  sm: {
+    type: Object,
+    default() {
+      return { span: 0, offset: 0 };
+    }
+  },
+  md: {
+    type: Object,
+    default() {
+      return { span: 0, offset: 0 };
+    }
+  },
+  lg: {
+    type: Object,
+    default() {
+      return { span: 0, offset: 0 };
+    }
+  },
+  xl: {
+    type: Object,
+    default() {
+      return { span: 0, offset: 0 };
+    }
+  }
 });
 
-const attrs = useAttrs() as { index: string };
+const attrs = useAttrs();
 const isShow = ref(true);
 
 // 注入断点
-const breakPoint = inject<Ref<BreakPoint>>("breakPoint", ref("xl"));
-const shouldHiddenIndex = inject<Ref<number>>("shouldHiddenIndex", ref(-1));
+const breakPoint = inject < Ref < BreakPoint >> ("breakPoint", ref("xl"));
+const shouldHiddenIndex = inject < Ref < number >> ("shouldHiddenIndex", ref(-1));
 watch(
   () => [shouldHiddenIndex.value, breakPoint.value],
   n => {

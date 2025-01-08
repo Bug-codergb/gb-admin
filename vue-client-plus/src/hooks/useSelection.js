@@ -5,7 +5,7 @@ import { ref, computed } from "vue";
  * @param {String} rowKey 当表格可以多选时，所指定的 id
  * */
 export const useSelection = (rowKey = "id") => {
-  const isSelected = ref < boolean > false;
+  const isSelected = ref(false);
   const selectedList = ref([]);
 
   // 当前选中的所有 ids 数组

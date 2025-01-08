@@ -2,14 +2,14 @@
 
 <template>
   <!-- 查询表单 -->
-  <SearchForm
-    v-show="isShowSearch"
-    :search="_search"
-    :reset="_reset"
-    :columns="searchColumns"
-    :search-param="searchParam"
-    :search-col="searchCol"
-  />
+  <!--  <SearchForm-->
+  <!--    v-show="isShowSearch"-->
+  <!--    :search="_search"-->
+  <!--    :reset="_reset"-->
+  <!--    :columns="searchColumns"-->
+  <!--    :search-param="searchParam"-->
+  <!--    :search-col="searchCol"-->
+  <!--  />-->
 
   <!-- 表格主体 -->
   <div class="card table-main">
@@ -110,7 +110,7 @@ import { useSelection } from "@/hooks/useSelection";
 
 import { Refresh, Operation, Search } from "@element-plus/icons-vue";
 import { generateUUID, handleProp } from "@/utils";
-import SearchForm from "@/components/SearchForm/index.vue";
+//import SearchForm from "@/components/SearchForm/index.vue";
 import Pagination from "./components/Pagination.vue";
 import ColSetting from "./components/ColSetting.vue";
 import TableColumn from "./components/TableColumn.vue";
@@ -127,7 +127,7 @@ const props = defineProps({
   data: {
     type: Array,
     default() {
-      return [];
+      return null;
     }
   },
   title: {
@@ -208,7 +208,7 @@ const { selectionChange, selectedList, selectedListIds, isSelected } = useSelect
 // 表格操作 Hooks
 const { tableData, pageable, searchParam, searchInitParam, getTableList, search, reset, handleSizeChange, handleCurrentChange } =
   useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, props.requestError);
-
+console.log(tableData.value, "tableData");
 // 清空选中数据列表
 const clearSelection = () => tableRef.value.clearSelection();
 
@@ -304,15 +304,15 @@ const colSetting = tableColumns.filter(item => {
 const openColSetting = () => colRef.value.openColSetting();
 
 const emit = defineEmits(["search", "reset", "dragSort"]);
-const _search = () => {
+/*const _search = () => {
   search();
   emit("search");
-};
+};*/
 
-const _reset = () => {
+/*const _reset = () => {
   reset();
   emit("reset");
-};
+};*/
 
 // 表格拖拽排序
 const dragSort = () => {

@@ -23,7 +23,14 @@
 
 <script setup lang="js" name="ColSetting">
 import { ref } from "vue";
-
+defineProps({
+  colSetting: {
+    type: Array,
+    default() {
+      return [];
+    }
+  }
+});
 const drawerVisible = ref(false);
 
 const openColSetting = () => {

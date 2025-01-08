@@ -17,7 +17,7 @@
           :on-exceed="handleExceed"
           :on-success="excelUploadSuccess"
           :on-error="excelUploadError"
-          :accept="parameter.fileType!.join(',')"
+          :accept="parameter.fileType.join(',')"
         >
           <slot name="empty">
             <el-icon class="el-icon--upload">
@@ -39,20 +39,11 @@
   </el-dialog>
 </template>
 
-<script setup lang="ts" name="ImportExcel">
+<script setup lang="js" name="ImportExcel">
 import { ref } from "vue";
 import { useDownload } from "@/hooks/useDownload";
 import { Download } from "@element-plus/icons-vue";
-import { ElNotification, UploadRequestOptions, UploadRawFile } from "element-plus";
-
-export interface ExcelParameterProps {
-  title: string; // 标题
-  fileSize?: number; // 上传文件的大小
-  fileType?: File.ExcelMimeType[]; // 上传文件的类型
-  tempApi?: (params: any) => Promise<any>; // 下载模板的Api
-  importApi?: (params: any) => Promise<any>; // 批量导入的Api
-  getTableList?: () => void; // 获取表格数据的Api
-}
+import { ElNotification } from "element-plus";
 
 // 是否覆盖数据
 const isCover = ref(false);
@@ -61,14 +52,14 @@ const excelLimit = ref(1);
 // dialog状态
 const dialogVisible = ref(false);
 // 父组件传过来的参数
-const parameter = ref<ExcelParameterProps>({
+const parameter = ref({
   title: "",
   fileSize: 5,
   fileType: ["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"]
 });
 
 // 接收父组件参数
-const acceptParams = (params: ExcelParameterProps) => {
+const acceptParams = params => {
   parameter.value = { ...parameter.value, ...params };
   dialogVisible.value = true;
 };
@@ -80,11 +71,11 @@ const downloadTemp = () => {
 };
 
 // 文件上传
-const uploadExcel = async (param: UploadRequestOptions) => {
+const uploadExcel = async param => {
   let excelFormData = new FormData();
   excelFormData.append("file", param.file);
-  excelFormData.append("isCover", isCover.value as unknown as Blob);
-  await parameter.value.importApi!(excelFormData);
+  excelFormData.append("isCover", isCover.value);
+  await parameter.value.importApi(excelFormData);
   parameter.value.getTableList && parameter.value.getTableList();
   dialogVisible.value = false;
 };
@@ -93,9 +84,9 @@ const uploadExcel = async (param: UploadRequestOptions) => {
  * @description 文件上传之前判断
  * @param file 上传的文件
  * */
-const beforeExcelUpload = (file: UploadRawFile) => {
-  const isExcel = parameter.value.fileType!.includes(file.type as File.ExcelMimeType);
-  const fileSize = file.size / 1024 / 1024 < parameter.value.fileSize!;
+const beforeExcelUpload = file => {
+  const isExcel = parameter.value.fileType.includes(file.type);
+  const fileSize = file.size / 1024 / 1024 < parameter.value.fileSize;
   if (!isExcel)
     ElNotification({
       title: "温馨提示",
@@ -145,5 +136,5 @@ defineExpose({
 });
 </script>
 <style lang="scss" scoped>
-@import "./index.scss";
+@import "./index";
 </style>

@@ -55,8 +55,8 @@ const attrs = useAttrs();
 const isShow = ref(true);
 
 // 注入断点
-const breakPoint = inject < Ref < BreakPoint >> ("breakPoint", ref("xl"));
-const shouldHiddenIndex = inject < Ref < number >> ("shouldHiddenIndex", ref(-1));
+const breakPoint = inject("breakPoint", ref("xl"));
+const shouldHiddenIndex = inject("shouldHiddenIndex", ref(-1));
 watch(
   () => [shouldHiddenIndex.value, breakPoint.value],
   n => {

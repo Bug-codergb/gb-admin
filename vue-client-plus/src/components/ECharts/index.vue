@@ -2,27 +2,42 @@
   <div id="echarts" ref="chartRef" :style="echartsStyle" />
 </template>
 
-<script setup lang="ts" name="ECharts">
+<script setup lang="js" name="ECharts">
 import { ref, onMounted, onBeforeUnmount, watch, computed, markRaw, nextTick, onActivated } from "vue";
-import { EChartsType, ECElementEvent } from "echarts/core";
-import echarts, { ECOption } from "./config";
+
+import echarts from "./config";
 import { useDebounceFn } from "@vueuse/core";
 import { useGlobalStore } from "@/stores/modules/global";
 import { storeToRefs } from "pinia";
 
-interface Props {
-  option: ECOption;
-  renderer?: "canvas" | "svg";
-  resize?: boolean;
-  theme?: Object | string;
-  width?: number | string;
-  height?: number | string;
-  onClick?: (event: ECElementEvent) => any;
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  renderer: "canvas",
-  resize: true
+const props = defineProps({
+  option: {
+    type: Object,
+    default() {
+      return {};
+    }
+  },
+  renderer: {
+    type: String,
+    default: "canvas"
+  },
+  resize: {
+    type: Boolean,
+    default: true
+  },
+  theme: {
+    type: [Object, String]
+  },
+  width: {
+    type: [Number, String]
+  },
+  height: {
+    type: [Number, String]
+  },
+  onClick: {
+    type: Function,
+    default: () => {}
+  }
 });
 
 const echartsStyle = computed(() => {
@@ -31,8 +46,8 @@ const echartsStyle = computed(() => {
     : { height: "100%", width: "100%" };
 });
 
-const chartRef = ref<HTMLDivElement | HTMLCanvasElement>();
-const chartInstance = ref<EChartsType>();
+const chartRef = ref();
+const chartInstance = ref();
 
 const draw = () => {
   if (chartInstance.value) {
@@ -44,7 +59,7 @@ watch(props, () => {
   draw();
 });
 
-const handleClick = (event: ECElementEvent) => props.onClick && props.onClick(event);
+const handleClick = event => props.onClick && props.onClick(event);
 
 const init = () => {
   if (!chartRef.value) return;

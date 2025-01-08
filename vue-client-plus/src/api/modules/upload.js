@@ -6,10 +6,10 @@ import http from "@/api";
  */
 // 图片上传
 export const uploadImg = params => {
-  return http.post < Upload.ResFileUrl > (PORT1 + `/file/upload/img`, params, { cancel: false });
+  return http.post(PORT1 + `/file/upload/img`, params, { cancel: false });
 };
 
 // 视频上传
 export const uploadVideo = params => {
-  return http.post < Upload.ResFileUrl > (PORT1 + `/file/upload/video`, params, { cancel: false });
+  return http.post(PORT1 + `/file/upload/video`, params, { cancel: false });
 };

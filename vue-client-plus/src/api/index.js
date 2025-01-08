@@ -1,5 +1,5 @@
 import axios from "axios";
-import { showFullScreenLoading, tryHideFullScreenLoading } from "@/components/Loading/fullScreen";
+import { showFullScreenLoading, tryHideFullScreenLoading } from "@/components/Loading/fullScreen.js";
 import { LOGIN_URL } from "@/config";
 import { ElMessage } from "element-plus";
 

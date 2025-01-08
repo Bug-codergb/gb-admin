@@ -1,7 +1,7 @@
 import { ElLoading } from "element-plus";
 
 /* 全局请求 loading */
-let loadingInstance: ReturnType<typeof ElLoading.service>;
+let loadingInstance;
 
 /**
  * @description 开启 Loading

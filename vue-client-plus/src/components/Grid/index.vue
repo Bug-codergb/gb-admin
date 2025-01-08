@@ -5,20 +5,7 @@
 </template>
 
 <script setup lang="js" name="Grid">
-import {
-  ref,
-  watch,
-  useSlots,
-  computed,
-  provide,
-  onBeforeMount,
-  onMounted,
-  onUnmounted,
-  onDeactivated,
-  onActivated,
-  VNodeArrayChildren,
-  VNode
-} from "vue";
+import { ref, watch, useSlots, computed, provide, onBeforeMount, onMounted, onUnmounted, onDeactivated, onActivated } from "vue";
 
 const props = defineProps({
   cols: {

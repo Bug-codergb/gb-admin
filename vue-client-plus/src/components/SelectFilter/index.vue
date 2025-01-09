@@ -30,34 +30,25 @@
   </div>
 </template>
 
-<script setup lang="ts" name="selectFilter">
+<script setup lang="js" name="selectFilter">
 import { ref, watch } from "vue";
 
-interface OptionsProps {
-  value: string | number;
-  label: string;
-  icon?: string;
-}
-
-interface SelectDataProps {
-  title: string; // 列表标题
-  key: string; // 当前筛选项 key 值
-  multiple?: boolean; // 是否为多选
-  options: OptionsProps[]; // 筛选数据
-}
-
-interface SelectFilterProps {
-  data?: SelectDataProps[]; // 选择的列表数据
-  defaultValues?: { [key: string]: any }; // 默认值
-}
-
-const props = withDefaults(defineProps<SelectFilterProps>(), {
-  data: () => [],
-  defaultValues: () => ({})
+const props = defineProps({
+  data: {
+    type: Array,
+    default() {
+      return [];
+    }
+  },
+  defaultValues: {
+    type: Object,
+    default() {
+      return {};
+    }
+  }
 });
-
 // 重新接收默认值
-const selected = ref<{ [key: string]: any }>({});
+const selected = ref({});
 watch(
   () => props.defaultValues,
   () => {
@@ -69,18 +60,14 @@ watch(
   { deep: true, immediate: true }
 );
 
-// emit
-const emit = defineEmits<{
-  change: [value: any];
-}>();
-
+const emit = defineEmits(["change"]);
 /**
  * @description 选择筛选项
  * @param {Object} item 选中的哪项列表
  * @param {Object} option 选中的值
  * @return void
  * */
-const select = (item: SelectDataProps, option: OptionsProps) => {
+const select = (item, option) => {
   if (!item.multiple) {
     // * 单选
     if (selected.value[item.key] !== option.value) selected.value[item.key] = option.value;
@@ -90,7 +77,7 @@ const select = (item: SelectDataProps, option: OptionsProps) => {
     if (item.options[0].value === option.value) selected.value[item.key] = [option.value];
     // 如果选择的值已经选中了，则删除选中的值
     if (selected.value[item.key].includes(option.value)) {
-      let currentIndex = selected.value[item.key].findIndex((s: any) => s === option.value);
+      let currentIndex = selected.value[item.key].findIndex(s => s === option.value);
       selected.value[item.key].splice(currentIndex, 1);
       // 当全部删光时，把第第一个值选中
       if (selected.value[item.key].length == 0) selected.value[item.key] = [item.options[0].value];
@@ -106,5 +93,5 @@ const select = (item: SelectDataProps, option: OptionsProps) => {
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import "./index";
 </style>

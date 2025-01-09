@@ -45,24 +45,39 @@
   </div>
 </template>
 
-<script setup lang="ts" name="TreeFilter">
+<script setup lang="js" name="TreeFilter">
 import { ref, watch, onBeforeMount, nextTick } from "vue";
 import { ElTree } from "element-plus";
 
-// 接收父组件参数并设置默认值
-interface TreeFilterProps {
-  requestApi?: (data?: any) => Promise<any>; // 请求分类数据的 api ==> 非必传
-  data?: { [key: string]: any }[]; // 分类数据，如果有分类数据，则不会执行 api 请求 ==> 非必传
-  title?: string; // treeFilter 标题 ==> 非必传
-  id?: string; // 选择的id ==> 非必传，默认为 “id”
-  label?: string; // 显示的label ==> 非必传，默认为 “label”
-  multiple?: boolean; // 是否为多选 ==> 非必传，默认为 false
-  defaultValue?: any; // 默认选中的值 ==> 非必传
-}
-const props = withDefaults(defineProps<TreeFilterProps>(), {
-  id: "id",
-  label: "label",
-  multiple: false
+const props = defineProps({
+  requestApi: {
+    type: Function
+  },
+  data: {
+    type: Array,
+    default() {
+      return [];
+    }
+  },
+  title: {
+    type: String,
+    default: ""
+  },
+  id: {
+    type: String,
+    default: "id"
+  },
+  label: {
+    type: String,
+    default: "label"
+  },
+  multiple: {
+    type: Boolean,
+    default: false
+  },
+  defaultValue: {
+    type: Object
+  }
 });
 
 const defaultProps = {
@@ -70,9 +85,9 @@ const defaultProps = {
   label: props.label
 };
 
-const treeRef = ref<InstanceType<typeof ElTree>>();
-const treeData = ref<{ [key: string]: any }[]>([]);
-const treeAllData = ref<{ [key: string]: any }[]>([]);
+const treeRef = ref();
+const treeData = ref([]);
+const treeAllData = ref([]);
 
 const selected = ref();
 const setSelected = () => {
@@ -83,7 +98,7 @@ const setSelected = () => {
 onBeforeMount(async () => {
   setSelected();
   if (props.requestApi) {
-    const { data } = await props.requestApi!();
+    const { data } = await props.requestApi();
     treeData.value = data;
     treeAllData.value = [{ id: "", [props.label]: "全部" }, ...data];
   }
@@ -109,11 +124,11 @@ watch(
 
 const filterText = ref("");
 watch(filterText, val => {
-  treeRef.value!.filter(val);
+  treeRef.value.filter(val);
 });
 
 // 过滤
-const filterNode = (value: string, data: { [key: string]: any }, node: any) => {
+const filterNode = (value, data, node) => {
   if (!value) return true;
   let parentNode = node.parent,
     labels = [node.label],
@@ -127,7 +142,7 @@ const filterNode = (value: string, data: { [key: string]: any }, node: any) => {
 };
 
 // 切换树节点的展开或折叠状态
-const toggleTreeNodes = (isExpand: boolean) => {
+const toggleTreeNodes = isExpand => {
   let nodes = treeRef.value?.store.nodesMap;
   if (!nodes) return;
   for (const node in nodes) {
@@ -138,12 +153,10 @@ const toggleTreeNodes = (isExpand: boolean) => {
 };
 
 // emit
-const emit = defineEmits<{
-  change: [value: any];
-}>();
 
+const emit = defineEmits(["change"]);
 // 单选
-const handleNodeClick = (data: { [key: string]: any }) => {
+const handleNodeClick = data => {
   if (props.multiple) return;
   emit("change", data[props.id]);
 };
@@ -158,5 +171,5 @@ defineExpose({ treeData, treeAllData, treeRef });
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import "./index";
 </style>

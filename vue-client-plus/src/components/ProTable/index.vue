@@ -2,14 +2,14 @@
 
 <template>
   <!-- 查询表单 -->
-  <!--  <SearchForm-->
-  <!--    v-show="isShowSearch"-->
-  <!--    :search="_search"-->
-  <!--    :reset="_reset"-->
-  <!--    :columns="searchColumns"-->
-  <!--    :search-param="searchParam"-->
-  <!--    :search-col="searchCol"-->
-  <!--  />-->
+  <SearchForm
+    v-show="isShowSearch"
+    :search="_search"
+    :reset="_reset"
+    :columns="searchColumns"
+    :search-param="searchParam"
+    :search-col="searchCol"
+  />
 
   <!-- 表格主体 -->
   <div class="card table-main">
@@ -110,7 +110,7 @@ import { useSelection } from "@/hooks/useSelection";
 
 import { Refresh, Operation, Search } from "@element-plus/icons-vue";
 import { generateUUID, handleProp } from "@/utils";
-//import SearchForm from "@/components/SearchForm/index.vue";
+import SearchForm from "@/components/SearchForm/index.vue";
 import Pagination from "./components/Pagination.vue";
 import ColSetting from "./components/ColSetting.vue";
 import TableColumn from "./components/TableColumn.vue";
@@ -167,10 +167,7 @@ const props = defineProps({
     }
   },
   dataCallback: {
-    type: Function,
-    default() {
-      return null;
-    }
+    type: Function
   },
   requestError: {
     type: Function,
@@ -304,16 +301,15 @@ const colSetting = tableColumns.filter(item => {
 const openColSetting = () => colRef.value.openColSetting();
 
 const emit = defineEmits(["search", "reset", "dragSort"]);
-/*const _search = () => {
+const _search = () => {
   search();
   emit("search");
-};*/
+};
 
-/*const _reset = () => {
+const _reset = () => {
   reset();
   emit("reset");
-};*/
-
+};
 // 表格拖拽排序
 const dragSort = () => {
   const tbody = document.querySelector(`#${uuid.value} tbody`);

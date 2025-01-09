@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup lang="js" name="GridItem">
-import { computed, inject, Ref, ref, useAttrs, watch } from "vue";
+import { computed, inject, ref, useAttrs, watch } from "vue";
 
 const props = defineProps({
   offset: {

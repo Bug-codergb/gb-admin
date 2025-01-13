@@ -70,12 +70,12 @@ export function getShowMenu(menuList) {
   fn(menuList);
   return menuList;
 }
-export function getFlatMenu(menuList) {
+export function getFlatMenuList(menuList) {
   let arr = [];
   menuList = cloneDeep(menuList);
   for (let item of menuList) {
     if (item.children && item.children.length !== 0) {
-      let ret = getFlatMenu(item.children);
+      let ret = getFlatMenuList(item.children);
       arr = arr.concat(ret);
       delete item.children;
     }

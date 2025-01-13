@@ -1,26 +1,31 @@
-import React, { memo } from "react";
+import React, { memo,useEffect } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, Flex } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeUserKeyState } from "@/store/modules/user";
-import { authSyncThunk } from "@/store/modules/auth"
+import { authSyncThunk ,selectFlatMenuList} from "@/store/modules/auth"
 import { HOME_URL } from "@/constant/url";
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onFinish = values => {
     try {
-      dispatch(changeUserKeyState({ key: "userName", value: values.username }));
-      dispatch(changeUserKeyState({ key: "token", value: "token" }));
+      //dispatch(changeUserKeyState({ key: "userName", value: values.username }));
+     // dispatch(changeUserKeyState({ key: "token", value: "token" }));
       dispatch(authSyncThunk());
-      navigate(HOME_URL);
+      //navigate(HOME_URL);
     } catch (e) {
       console.log(e);
     }
   };
+  const flatMenuList = useSelector(selectFlatMenuList)
+  const {authMenuList} = useSelector(state=>state.auth)
+  console.log(authMenuList)
+ 
   return (
     <div>
+      {flatMenuList.length}-{`${authMenuList.length}`}
       <Form name="login" size="large" initialValues={{ remember: true }} style={{ with: "100%" }} onFinish={onFinish}>
         <Form.Item name="username" rules={[{ required: true, message: "请输入您的用户名" }]}>
           <Input prefix={<UserOutlined />} placeholder="用户名" />

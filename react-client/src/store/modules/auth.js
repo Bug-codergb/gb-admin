@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getUserAuthMenuApi } from "../../api/modules/user/index";
-import { formatMenu } from "@/utils/menu"
+import { getFlatMenuList } from "@/utils/menu"
 import localCache from "@/utils/cache"
 const authSyncThunk = createAsyncThunk("/auth", async () => {
   const res = await getUserAuthMenuApi();
@@ -20,20 +20,24 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(authSyncThunk.fulfilled, (state,action) => {
-      state.authMenu = action.payload;
+      state.authMenuList = action.payload;
       localCache.update('auth',"authMenuList",action.payload)
     })
   },
   selectors: {
-    flatMenuList:(state)=>{
-      console.log(1)
-      return formatMenu(state.authMenuList);
+    selectFlatMenuList:(state)=>{
+      
+      const flatMenu = getFlatMenuList(state.authMenuList)
+      console.log(flatMenu)
+      return flatMenu;
     }
   }
 })
 const {changeAuthKeyState } = authSlice.actions;
+const {selectFlatMenuList} = authSlice.selectors;
 export {
   authSlice,
   changeAuthKeyState,
-  authSyncThunk
+  authSyncThunk,
+  selectFlatMenuList
 }

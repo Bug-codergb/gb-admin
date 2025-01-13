@@ -25,9 +25,9 @@ class RequestHttp{
     this.service.interceptors.response.use((response) => {
       const { data, config } = response;
       if (data.code === RESPONSE_CODE.NO_AUTHORIZATION) {
-        router.replace({
+        /*router.replace({
           path:LOGIN_URL
-        })
+        })*/
       }
       return data;
     }, err => {

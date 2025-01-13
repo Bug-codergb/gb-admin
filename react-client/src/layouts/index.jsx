@@ -16,11 +16,11 @@ const Layouts = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!user || !user.token) {
-      navigate(LOGIN_URL, {
+      /*navigate(LOGIN_URL, {
         state: {
           from: location.pathname
         }
-      });
+      });*/
     }
     return () => {
       dispatch(changeRouteKeyState({ key: "prevRoute", value: location }));

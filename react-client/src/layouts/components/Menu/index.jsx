@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useSelector } from "react-redux"
 import { useNavigate, useLocation, useRouteLoaderData } from "react-router-dom";
 import { MailOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
@@ -15,7 +15,8 @@ const ProMenu = () => {
   const handleMenu = ({ key, keyPath, domEvent }) => {
     navigate(key);
   };
-
+  const selectors = useSelector(state=>state);
+  console.log(selectors)
   return (
     <div style={{ with: "100%" }}>
       <Menu

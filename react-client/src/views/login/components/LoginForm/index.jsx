@@ -4,6 +4,7 @@ import { Button, Checkbox, Form, Input, Flex } from "antd";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeUserKeyState } from "@/store/modules/user";
+import { authSyncThunk } from "@/store/modules/auth"
 import { HOME_URL } from "@/constant/url";
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const LoginForm = () => {
     try {
       dispatch(changeUserKeyState({ key: "userName", value: values.username }));
       dispatch(changeUserKeyState({ key: "token", value: "token" }));
+      dispatch(authSyncThunk());
       navigate(HOME_URL);
     } catch (e) {
       console.log(e);

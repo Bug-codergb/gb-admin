@@ -8,7 +8,7 @@ import App from "./App.jsx";
 import "./styles/common.scss"
 import  "./styles/demon.css"
 const root = createRoot(document.getElementById("root"))
-//initStore(store)
+initStore(store)
 root.render(
   <Provider store={store}>
     <App />
